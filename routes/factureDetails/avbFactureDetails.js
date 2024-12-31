@@ -1,22 +1,13 @@
-import express from 'express'
+import express from "express";
 import {
-   getAvbFactureDetails,
-   getAvbFactureDetail
-  } from '../../controllers/factureDetails/avbFactureDetails.js';
+  getAvbFactureDetails,
+  getAvbFactureDetail,
+} from "../../controllers/factureDetails/avbFactureDetails.js";
 
-  const router = express.Router()
+const router = express.Router();
 
+router.route("/").get(getAvbFactureDetails);
 
-router.route('/')
- .get(getAvbFactureDetails)
-
-
-
-router.route('/:id')
-  .get(getAvbFactureDetail)
-
-
-
-
+router.route("/:id").get(getAvbFactureDetail);
 
 export default router;

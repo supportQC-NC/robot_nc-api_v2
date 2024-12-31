@@ -1,22 +1,13 @@
-import express from 'express'
+import express from "express";
 import {
-   getAwFactureDetails,
-   getAwFactureDetail
-  } from '../../controllers/factureDetails/awFactureDetails.js';
+  getAwFactureDetails,
+  getAwFactureDetail,
+} from "../../controllers/factureDetails/awFactureDetails.js";
 
-  const router = express.Router()
+const router = express.Router();
 
+router.route("/").get(getAwFactureDetails);
 
-router.route('/')
- .get(getAwFactureDetails)
-
-
-
-router.route('/:id')
-  .get(getAwFactureDetail)
-
-
-
-
+router.route("/:id").get(getAwFactureDetail);
 
 export default router;
