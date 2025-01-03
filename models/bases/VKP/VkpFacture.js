@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // Définition du schéma pour le fichier DBF
-const AwFactureSchema = new mongoose.Schema(
+const VkpFactureSchema = new mongoose.Schema(
   {
     NUMFACT: { type: String}, // Numéro de facture
     TYPFACT: { type: String }, // Type de facture
@@ -32,4 +32,4 @@ const AwFactureSchema = new mongoose.Schema(
   { timestamps: true } // Ajoute les champs `createdAt` et `updatedAt`
 );
 
-export default mongoose.model("AwFacture", AwFactureSchema);
+export default mongoose.model("VkpFacture", VkpFactureSchema);

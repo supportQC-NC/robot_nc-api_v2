@@ -1,17 +1,17 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import DqFactureDetails from "../../models/bases/DQ/DqFactureDetail.js";
+import FmbFactureDetails from "../../models/bases/FMB/FmbFactureDetail.js";
 
 // Get all AW Factures
-const getDqFactureDetails = asyncHandler(async (req, res, next) => {
-  const factureDetails = await DqFactureDetails.find();
+const getFmbFactureDetails = asyncHandler(async (req, res, next) => {
+  const factureDetails = await FmbFactureDetails.find();
 
   res.status(200).json({ success: true, count: factureDetails.length, data: factureDetails });
 });
 
 // Get single AW client
-const getDqFactureDetail = asyncHandler(async (req, res, next) => {
-  const factureDetail = await DqFactureDetails.findById(req.params.id);
+const getFmbFactureDetail = asyncHandler(async (req, res, next) => {
+  const factureDetail = await FmbFactureDetails.findById(req.params.id);
   if (!factureDetail) {
     return next(
       new ErrorResponse(`Facture not found with id of ${req.params.id}`, 404)
@@ -22,4 +22,4 @@ const getDqFactureDetail = asyncHandler(async (req, res, next) => {
 
 
 
-export { getDqFactureDetails, getDqFactureDetail };
+export { getFmbFactureDetails, getFmbFactureDetail };

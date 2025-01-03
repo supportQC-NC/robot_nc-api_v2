@@ -76,5 +76,4 @@ const advancedResults = (model, populate) => async (req, res, next) => {
   next();
 };
 
-
-export default  advancedResults;
+module.exports = advancedResults;
