@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import LdClasse from "../../models/bases/LD/LdClassNum.js";
+import LdClasse from "../../models/bases/LD/LdClassnum.js";
 
 // Get all LD Classes
 const getLdClasses = asyncHandler(async (req, res, next) => {

@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import SitecTiers from "../../models/bases/SITEC/SitecTier.js";
+import SitecTiers from "../../models/bases/SITEC/SITECTier.js";
 
 // Get all SITEC Tiers
 const getSitecTiers = asyncHandler(async (req, res, next) => {

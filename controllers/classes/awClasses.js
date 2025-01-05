@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import AwClasse from "../../models/bases/AW/AWClassNum.js";
+import AwClasse from "../../models/bases/AW/AwClassnum.js";
 
 // Get all AVB Classes
 const getAwClasses = asyncHandler(async (req, res, next) => {

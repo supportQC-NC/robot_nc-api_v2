@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import KoumacFactureDetails from "../../models/bases/KOUMAC/KOUMACFactureDetail.js";
+import KoumacFactureDetails from "../../models/bases/KOUMAC/KoumacFactureDetail.js";
 
 // Get all KOUMAC Factures
 const getKoumacFactureDetails = asyncHandler(async (req, res, next) => {

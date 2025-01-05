@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import SitecFactureDetails from "../../models/bases/SITEC/SitecFactureDetail.js";
+import SitecFactureDetails from "../../models/bases/SITEC/SITECFactureDetail.js";
 
 // Get all SITEC Factures
 const getSitecFactureDetails = asyncHandler(async (req, res, next) => {
