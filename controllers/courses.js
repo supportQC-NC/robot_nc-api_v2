@@ -100,11 +100,14 @@ const updateCourse = asyncHandler(async (req, res, next) => {
     runValidators: true,
   });
 
+
+
   res.status(200).json({
     success: true,
     data: course,
   });
 });
+
 
 // @desc      Delete course
 // @route     DELETE /api/v1/courses/:id
