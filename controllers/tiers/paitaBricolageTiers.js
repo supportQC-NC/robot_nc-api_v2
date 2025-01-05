@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import PaitaBricolageTiers from "../../models/bases/PAITA_BRICOLAGE/PaitaBricolageTier.js";
+import PaitaBricolageTiers from "../../models/bases/PAITA_BRICOLAGE/PAITA_BRICOLAGETier.js";
 
 // Get all PAITABRICOLAGE Tiers
 const getPaitaBricolageTiers = asyncHandler(async (req, res, next) => {
