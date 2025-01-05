@@ -11,8 +11,6 @@ const getAwArticles = asyncHandler(async (req, res, next) => {
     .json({ success: true, count: articles.length, data: articles });
 });
 
-
-
 // Get single AVB article
 const getAwArticle = asyncHandler(async (req, res, next) => {
   const article = await AwArticle.findById(req.params.id);
@@ -24,12 +22,4 @@ const getAwArticle = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: article });
 });
 
-
-
-
-
-export {
-  getAwArticles,
-  getAwArticle,
-
-};
+export { getAwArticles, getAwArticle };

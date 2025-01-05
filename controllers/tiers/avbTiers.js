@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import AvbTiers from "../../models/bases/AVB/AvbTier.js";
+import AvbTiers from "../../models/bases/AVB/AVBTier.js";
 
 // Get all AVB Tiers
 const getAvbTiers = asyncHandler(async (req, res, next) => {

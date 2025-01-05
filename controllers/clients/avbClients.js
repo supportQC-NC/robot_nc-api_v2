@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import AvbClient from "../../models/bases/AVB/AvbClient.js";
+import AvbClient from "../../models/bases/AVB/AVBClient.js";
 
 // Get all AVB Clients
 const getAvbClients = asyncHandler(async (req, res, next) => {
