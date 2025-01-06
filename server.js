@@ -19,8 +19,8 @@ import avbFactures from './routes/factures/avbFactures.js'
 import avbFactureDetails from './routes/factureDetails/avbFactureDetails.js'
 import avbTiers from './routes/tiers/avbTiers.js'
 //AW
-import awArticles from "./routes/articles/avbArticles.js";
-import awClasses from './routes/classes/avbClasses.js'
+import awArticles from "./routes/articles/awArticles.js";
+import awClasses from './routes/classes/awClasses.js'
 import awFournisseurs from './routes/fournisseurs/awFournisseurs.js'
 import awClients from './routes/clients/awClients.js'
 import awFactures from './routes/factures/awFactures.js'
@@ -153,6 +153,11 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
   }
 
+
+  // Route principale pour tester l'API
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'API Robot-NC fonctionne.' });
+});
 
 
 // Mount Routers 
