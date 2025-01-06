@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import MeareClient from "../../models/bases/MEARE/MeareClient.js";
+import MeareClient from "../../models/bases/MEARE/Client.js";
 
 // Get all MEARE Clients
 const getMeareClients = asyncHandler(async (req, res, next) => {

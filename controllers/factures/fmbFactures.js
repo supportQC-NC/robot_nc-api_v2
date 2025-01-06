@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import FmbFacture from "../../models/bases/FMB/FmbFacture.js";
+import FmbFacture from "../../models/bases/FMB/Facture.js";
 
 // Get all FMB Factures
 const getFmbFactures = asyncHandler(async (req, res, next) => {

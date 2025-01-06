@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import LdFacture from "../../models/bases/LD/LdFacture.js";
+import LdFacture from "../../models/bases/LD//Facture.js";
 
 // Get all LD Factures
 const getLdFactures = asyncHandler(async (req, res, next) => {

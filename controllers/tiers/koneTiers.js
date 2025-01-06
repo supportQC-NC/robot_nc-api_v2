@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import KoneTiers from "../../models/bases/KONE/KoneTier.js";
+import KoneTiers from "../../models/bases/KONE/Tier.js";
 
 // Get all KONE Tiers
 const getKoneTiers = asyncHandler(async (req, res, next) => {

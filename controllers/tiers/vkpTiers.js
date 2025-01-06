@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import VkpTiers from "../../models/bases/VKP/VkpTier.js";
+import VkpTiers from "../../models/bases/VKP/Tier.js";
 
 // Get all VKP Tiers
 const getVkpTiers = asyncHandler(async (req, res, next) => {
@@ -8,8 +8,10 @@ const getVkpTiers = asyncHandler(async (req, res, next) => {
 
   res
     .status(200)
-    .json({ success: true, count: tiers.length, data: tiers });
+    .json({ success: true, count: tiers.length, data: tiers });          
 });
+
+
 
 // Get single VKP tier
 const getVkpTier = asyncHandler(async (req, res, next) => {
@@ -24,5 +26,7 @@ const getVkpTier = asyncHandler(async (req, res, next) => {
   }
   res.status(200).json({ success: true, data: tier });
 });
+
+
 
 export { getVkpTiers, getVkpTier };

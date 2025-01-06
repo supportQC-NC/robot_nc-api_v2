@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import HdArticle from "../../models/bases/HD/HdArticle.js";
+import HdArticle from "../../models/bases/HD/Article.js";
 
 // Get all HD Articles
 const getHdArticles = asyncHandler(async (req, res, next) => {

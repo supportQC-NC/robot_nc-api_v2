@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import FmbTiers from "../../models/bases/FMB/FmbTier.js";
+import FmbTiers from "../../models/bases/FMB/Tier.js";
 
 // Get all FMB Tiers
 const getFmbTiers = asyncHandler(async (req, res, next) => {

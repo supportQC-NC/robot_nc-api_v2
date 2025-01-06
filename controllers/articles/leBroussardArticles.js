@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import LeBroussardArticle from "../../models/bases/LE_BROUSSARD/LE_BROUSSARDArticle.js";
+import LeBroussardArticle from "../../models/bases/LE_BROUSSARD/Article.js";
 
 // Get all LEBROUSSARD Articles
 const getLeBroussardArticles = asyncHandler(async (req, res, next) => {

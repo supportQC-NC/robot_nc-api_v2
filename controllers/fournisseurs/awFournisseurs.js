@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import AwFournisseurs from "../../models/bases/AW/AwFournisseur.js";
+import AwFournisseurs from "../../models/bases/AW/Fournisseur.js";
 
 // Get all AW Fournisseurs
 const getAwFournisseurs = asyncHandler(async (req, res, next) => {

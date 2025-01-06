@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import VkpClasse from "../../models/bases/VKP/VkpClassnum.js";
+import VkpClasse from "../../models/bases/VKP/Classnum.js";
 
 // Get all VKP Classes
 const getVkpClasses = asyncHandler(async (req, res, next) => {

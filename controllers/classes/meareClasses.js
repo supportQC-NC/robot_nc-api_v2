@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import MeareClasse from "../../models/bases/MEARE/MEAREClassnum.js";
+import MeareClasse from "../../models/bases/MEARE/Classnum.js";
 
 // Get all MEARE Classes
 const getMeareClasses = asyncHandler(async (req, res, next) => {

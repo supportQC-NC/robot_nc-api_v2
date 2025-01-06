@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import VkpClient from "../../models/bases/VKP/VkpClient.js";
+import VkpClient from "../../models/bases/VKP/Client.js";
 
 // Get all VKP Clients
 const getVkpClients = asyncHandler(async (req, res, next) => {

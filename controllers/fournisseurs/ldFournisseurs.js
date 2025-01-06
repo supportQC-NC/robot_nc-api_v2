@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import LdFournisseurs from "../../models/bases/LD/LdFournisseur.js";
+import LdFournisseurs from "../../models/bases/LD/Fournisseur.js";
 
 // Get all LD Fournisseurs
 const getLdFournisseurs = asyncHandler(async (req, res, next) => {

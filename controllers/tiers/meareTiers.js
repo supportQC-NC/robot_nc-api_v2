@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import MeareTiers from "../../models/bases/MEARE/MeareTier.js";
+import MeareTiers from "../../models/bases/MEARE/Tier.js";
 
 // Get all MEARE Tiers
 const getMeareTiers = asyncHandler(async (req, res, next) => {

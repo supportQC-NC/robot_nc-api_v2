@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import PaitaBricolageFactureDetails from "../../models/bases/PAITA_BRICOLAGE/PAITA_BRICOLAGEFactureDetail.js";
+import PaitaBricolageFactureDetails from "../../models/bases/PAITA_BRICOLAGE/FactureDetail.js";
 
 // Get all PAITABRICOLAGE Factures
 const getPaitaBricolageFactureDetails = asyncHandler(async (req, res, next) => {

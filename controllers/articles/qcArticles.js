@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import QcArticle from "../../models/bases/QC/QcArticle.js";
+import QcArticle from "../../models/bases/QC/Article.js";
 
 // Get all QC Articles
 const getQcArticles = asyncHandler(async (req, res, next) => {

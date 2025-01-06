@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import DqArticle from "../../models/bases/DQ/DqArticle.js";
+import DqArticle from "../../models/bases/DQ/Article.js";
 
 // Get all DQ Articles
 const getDqArticles = asyncHandler(async (req, res, next) => {

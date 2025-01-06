@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import MeareFactureDetails from "../../models/bases/MEARE/MeareFactureDetail.js";
+import MeareFactureDetails from "../../models/bases/MEARE/FactureDetail.js";
 
 // Get all MEARE Factures
 const getMeareFactureDetails = asyncHandler(async (req, res, next) => {

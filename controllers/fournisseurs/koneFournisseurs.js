@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import KoneFournisseurs from "../../models/bases/KONE/KoneFournisseur.js";
+import KoneFournisseurs from "../../models/bases/KONE/Fournisseur.js";
 
 // Get all KONE Fournisseurs
 const getKoneFournisseurs = asyncHandler(async (req, res, next) => {

@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import DqTiers from "../../models/bases/DQ/DqTier.js";
+import DqTiers from "../../models/bases/DQ/Tier.js";
 
 // Get all DQ Tiers
 const getDqTiers = asyncHandler(async (req, res, next) => {

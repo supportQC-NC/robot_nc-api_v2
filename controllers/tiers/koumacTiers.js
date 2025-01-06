@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import KoumacTiers from "../../models/bases/KOUMAC/KoumacTier.js";
+import KoumacTiers from "../../models/bases/KOUMAC/Tier.js";
 
 // Get all KOUMAC Tiers
 const getKoumacTiers = asyncHandler(async (req, res, next) => {

@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import KoumacClient from "../../models/bases/KOUMAC/KoumacClient.js";
+import KoumacClient from "../../models/bases/KOUMAC/Client.js";
 
 // Get all KOUMAC Clients
 const getKoumacClients = asyncHandler(async (req, res, next) => {

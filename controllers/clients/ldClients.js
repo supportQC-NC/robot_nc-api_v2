@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import LdClient from "../../models/bases/LD/LdClient.js";
+import LdClient from "../../models/bases/LD/Client.js";
 
 // Get all LD Clients
 const getLdClients = asyncHandler(async (req, res, next) => {

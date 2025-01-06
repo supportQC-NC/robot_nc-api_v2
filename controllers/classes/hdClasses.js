@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import HdClasse from "../../models/bases/HD/HdClassnum.js";
+import HdClasse from "../../models/bases/HD/Classnum.js";
 
 // Get all HD Classes
 const getHdClasses = asyncHandler(async (req, res, next) => {

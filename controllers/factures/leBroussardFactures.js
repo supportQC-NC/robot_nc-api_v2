@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import LeBroussardFacture from "../../models/bases/LE_BROUSSARD/LE_BROUSSARDFacture.js";
+import LeBroussardFacture from "../../models/bases/LE_BROUSSARD/Facture.js";
 
 // Get all LEBROUSSARD Factures
 const getLeBroussardFactures = asyncHandler(async (req, res, next) => {

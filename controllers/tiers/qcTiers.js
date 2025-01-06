@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import QcTiers from "../../models/bases/QC/QcTier.js";
+import QcTiers from "../../models/bases/QC/Tier.js";
 
 // Get all QC Tiers
 const getQcTiers = asyncHandler(async (req, res, next) => {

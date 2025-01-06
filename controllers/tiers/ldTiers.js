@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import LdTiers from "../../models/bases/LD/LdTier.js";
+import LdTiers from "../../models/bases/LD/Tier.js";
 
 // Get all LD Tiers
 const getLdTiers = asyncHandler(async (req, res, next) => {

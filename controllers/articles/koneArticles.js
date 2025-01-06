@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import KoneArticle from "../../models/bases/KONE/KoneArticle.js";
+import KoneArticle from "../../models/bases/KONE/Article.js";
 
 // Get all KONE Articles
 const getKoneArticles = asyncHandler(async (req, res, next) => {

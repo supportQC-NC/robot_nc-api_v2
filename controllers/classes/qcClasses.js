@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import QcClasse from "../../models/bases/QC/QcClassnum.js";
+import QcClasse from "../../models/bases/QC/Classnum.js";
 
 // Get all QC Classes
 const getQcClasses = asyncHandler(async (req, res, next) => {

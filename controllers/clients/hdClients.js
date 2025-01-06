@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import HdClient from "../../models/bases/HD/HdClient.js";
+import HdClient from "../../models/bases/HD/Client.js";
 
 // Get all HD Clients
 const getHdClients = asyncHandler(async (req, res, next) => {

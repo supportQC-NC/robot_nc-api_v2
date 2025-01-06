@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import VkpFacture from "../../models/bases/VKP/VkpFacture.js";
+import VkpFacture from "../../models/bases/VKP/Facture.js";
 
 // Get all VKP Factures
 const getVkpFactures = asyncHandler(async (req, res, next) => {

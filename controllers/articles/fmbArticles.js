@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import FmbArticle from "../../models/bases/FMB/FmbArticle.js";
+import FmbArticle from "../../models/bases/FMB/Article.js";
 
 // Get all FMB Articles
 const getFmbArticles = asyncHandler(async (req, res, next) => {

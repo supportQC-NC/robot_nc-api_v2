@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import AvbFactureDetails from "../../models/bases/AVB/AvbFactureDetail.js";
+import AvbFactureDetails from "../../models/bases/AVB/FactureDetail.js";
 
 // Get all AVB Factures
 const getAvbFactureDetails = asyncHandler(async (req, res, next) => {

@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import HdFacture from "../../models/bases/HD/HdFacture.js";
+import HdFacture from "../../models/bases/HD/Facture.js";
 
 // Get all HD Factures
 const getHdFactures = asyncHandler(async (req, res, next) => {

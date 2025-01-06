@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import HdTiers from "../../models/bases/HD/HdTier.js";
+import HdTiers from "../../models/bases/HD/Tier.js";
 
 // Get all HD Tiers
 const getHdTiers = asyncHandler(async (req, res, next) => {

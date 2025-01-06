@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import AwTiers from "../../models/bases/AW/AwTier.js";
+import AwTiers from "../../models/bases/AW/Tier.js";
 
 // Get all AW Tiers
 const getAwTiers = asyncHandler(async (req, res, next) => {

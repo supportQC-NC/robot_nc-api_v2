@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import DqFacture from "../../models/bases/DQ/DqFacture.js";
+import DqFacture from "../../models/bases/DQ/Facture.js";
 
 // Get all DQ Factures
 const getDqFactures = asyncHandler(async (req, res, next) => {

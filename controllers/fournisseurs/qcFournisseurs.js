@@ -1,6 +1,6 @@
 import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
-import QcFournisseurs from "../../models/bases/QC/QcFournisseur.js";
+import QcFournisseurs from "../../models/bases/QC/Fournisseur.js";
 
 // Get all QC Fournisseurs
 const getQcFournisseurs = asyncHandler(async (req, res, next) => {
