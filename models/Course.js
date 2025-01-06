@@ -78,4 +78,7 @@ CourseSchema.pre('remove', function() {
 });
 
 
+
+
+
 export default mongoose.model('Course', CourseSchema);
