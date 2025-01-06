@@ -151,13 +151,13 @@ const formatElapsedTime = () => {
 // Chargement dynamique des modèles
 const loadModel = async (folder, modelType) => {
   const modelFileName = {
-    article: `${folder}Article`,
-    classnum: `${folder}Classnum`,
-    fournisseur: `${folder}Fournisseur`,
-    facture: `${folder}Facture`,
-    factureDetail: `${folder}FactureDetail`,
-    tier: `${folder}Tier`,
-    client: `${folder}Client`,
+    article: `Article`,
+    classnum: `Classnum`,
+    fournisseur: `Fournisseur`,
+    facture: `Facture`,
+    factureDetail: `FactureDetail`,
+    tier: `Tier`,
+    client: `Client`,
   }[modelType];
 
   try {
