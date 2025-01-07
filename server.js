@@ -11,6 +11,9 @@ import errorHandler from "./middleware/error.js"; // Middleware d'erreurs
 import bootcamps from './routes/bootcamps.js'
 import courses from './routes/courses.js'
 import compagnies from './routes/compagnies.js'
+import reviews from './routes/reviews.js'
+import users from './routes/users.js'
+
 //AVB
 import avbArticles from './routes/articles/avbArticles.js'
 import avbClasses from './routes/classes/avbClasses.js'
@@ -166,6 +169,9 @@ app.get('/', (req, res) => {
 app.use('/api/v2/bootcamps', bootcamps)
 app.use('/api/v2/courses', courses)
 app.use('/api/v2/companies', compagnies)
+app.use('/api/v2/reviews', reviews)
+app.use('/api/v2/users', users)
+
 
 // AVB ROUTES
 app.use('/api/v2/avb/articles', avbArticles)
