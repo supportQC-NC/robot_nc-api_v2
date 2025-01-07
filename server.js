@@ -8,7 +8,7 @@ import errorHandler from "./middleware/error.js"; // Middleware d'erreurs
 
 
 // Route Files
-import auth from './routes/auth';
+import auth from './routes/auth.js';
 import bootcamps from './routes/bootcamps.js'
 import courses from './routes/courses.js'
 import compagnies from './routes/compagnies.js'
