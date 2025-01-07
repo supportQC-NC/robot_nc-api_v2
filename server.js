@@ -169,7 +169,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v2/bootcamps', bootcamps)
 app.use('/api/v2/courses', courses)
-app.use('/api/v1/auth', auth);
+app.use('/api/v2/auth', auth);
 app.use('/api/v2/companies', compagnies)
 app.use('/api/v2/reviews', reviews)
 app.use('/api/v2/users', users)
