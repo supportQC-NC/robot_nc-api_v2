@@ -32,7 +32,7 @@ const getReview = asyncHandler(async (req, res, next) => {
 
   if (!review) {
     return next(
-      new ErrorResponse(`No review found with the id of ${req.params.id}`, 404)
+      new ErrorResponse(`Aucun avis trouvé avec l’identifiant ${req.params.id}`, 404)
     );
   }
 
@@ -54,7 +54,7 @@ const addReview = asyncHandler(async (req, res, next) => {
   if (!bootcamp) {
     return next(
       new ErrorResponse(
-        `No bootcamp with the id of ${req.params.bootcampId}`,
+        `Aucun bootcamp trouvé avec l’identifiant.${req.params.bootcampId}`,
         404
       )
     );
@@ -76,13 +76,13 @@ const updateReview = asyncHandler(async (req, res, next) => {
 
   if (!review) {
     return next(
-      new ErrorResponse(`No review with the id of ${req.params.id}`, 404)
+      new ErrorResponse(`Aucun avis trouvé avec l’identifiant. ${req.params.id}`, 404)
     );
   }
 
   // Make sure review belongs to user or user is admin
   if (review.user.toString() !== req.user.id && req.user.role !== "admin") {
-    return next(new ErrorResponse(`Not authorized to update review`, 401));
+    return next(new ErrorResponse(`Non autorisé(e) à mettre à jour cet avis.`, 401));
   }
 
   review = await Review.findByIdAndUpdate(req.params.id, req.body, {
@@ -104,13 +104,13 @@ const deleteReview = asyncHandler(async (req, res, next) => {
 
   if (!review) {
     return next(
-      new ErrorResponse(`No review with the id of ${req.params.id}`, 404)
+      new ErrorResponse(`Aucun avis trouvé avec l’identifiant ${req.params.id}`, 404)
     );
   }
 
   // Make sure review belongs to user or user is admin
   if (review.user.toString() !== req.user.id && req.user.role !== "admin") {
-    return next(new ErrorResponse(`Not authorized to update review`, 401));
+    return next(new ErrorResponse(`Non autorisé(e) à mettre à jour cet avis`, 401));
   }
 
   await review.remove();

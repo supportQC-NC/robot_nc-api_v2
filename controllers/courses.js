@@ -25,7 +25,7 @@ const getCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(`No course with the id of ${req.params.id}`),
+      new ErrorResponse(`course introuvable avec l’identifiant ${req.params.id}`),
       404
     );
   }
@@ -49,7 +49,7 @@ const addCourse = asyncHandler(async (req, res, next) => {
 
   if (!bootcamp) {
     return next(
-      new ErrorResponse(`No bootcamp with the id of ${req.params.bootcampId}`),
+      new ErrorResponse(`course introuvable avec l’identifiant ${req.params.bootcampId}`),
       404
     );
   }
@@ -58,7 +58,7 @@ const addCourse = asyncHandler(async (req, res, next) => {
   if (bootcamp.user.toString() !== req.user.id && req.user.role !== "admin") {
     return next(
       new ErrorResponse(
-        `User ${req.user.id} is not authorized to add a course to bootcamp ${bootcamp._id}`,
+        `User ${req.user.id} n’est pas autorisé(e) à ajouter un cours à ce bootcamp : ${bootcamp._id}`,
         401
       )
     );
@@ -80,7 +80,7 @@ const updateCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(`No course with the id of ${req.params.id}`),
+      new ErrorResponse(`course introuvable avec l’identifiant ${req.params.id}`),
       404
     );
   }
@@ -89,7 +89,7 @@ const updateCourse = asyncHandler(async (req, res, next) => {
   if (course.user.toString() !== req.user.id && req.user.role !== "admin") {
     return next(
       new ErrorResponse(
-        `User ${req.user.id} is not authorized to update course ${course._id}`,
+        `User ${req.user.id} n’est pas autorisé(e) à mettre à jour ce cours. ${course._id}`,
         401
       )
     );
@@ -117,7 +117,7 @@ const deleteCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(`No course with the id of ${req.params.id}`),
+      new ErrorResponse(`Aucun cours trouvé avec l’identifiant. ${req.params.id}`),
       404
     );
   }
@@ -126,7 +126,7 @@ const deleteCourse = asyncHandler(async (req, res, next) => {
   if (course.user.toString() !== req.user.id && req.user.role !== "admin") {
     return next(
       new ErrorResponse(
-        `User ${req.user.id} is not authorized to delete course ${course._id}`,
+        `User ${req.user.id} n’est pas autorisé(e) à supprimer ce cours. ${course._id}`,
         401
       )
     );

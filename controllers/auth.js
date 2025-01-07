@@ -32,21 +32,21 @@ const login = asyncHandler(async (req, res, next) => {
 
   // Validate emil & password
   if (!email || !password) {
-    return next(new ErrorResponse('Please provide an email and password', 400));
+    return next(new ErrorResponse('Veuillez fournir une adresse e-mail et un mot de passe.', 400));
   }
 
   // Check for user
   const user = await User.findOne({ email }).select('+password');
 
   if (!user) {
-    return next(new ErrorResponse('Invalid credentials', 401));
+    return next(new ErrorResponse('Identifiants invalides', 401));
   }
 
   // Check if password matches
   const isMatch = await user.matchPassword(password);
 
   if (!isMatch) {
-    return next(new ErrorResponse('Invalid credentials', 401));
+    return next(new ErrorResponse('Identifiants invalides', 401));
   }
 
   sendTokenResponse(user, 200, res);
@@ -107,7 +107,7 @@ const updatePassword = asyncHandler(async (req, res, next) => {
 
   // Check current password
   if (!(await user.matchPassword(req.body.currentPassword))) {
-    return next(new ErrorResponse('Password is incorrect', 401));
+    return next(new ErrorResponse('Le mot de passe est incorrect', 401));
   }
 
   user.password = req.body.newPassword;
@@ -123,7 +123,7 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
   if (!user) {
-    return next(new ErrorResponse('There is no user with that email', 404));
+    return next(new ErrorResponse('Il n’existe aucun utilisateur correspondant à cette adresse e-mail', 404));
   }
 
   // Get reset token
@@ -136,16 +136,16 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
     'host'
   )}/api/v1/auth/resetpassword/${resetToken}`;
 
-  const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${resetUrl}`;
+  const message = `Vous recevez cet e-mail parce que vous (ou quelqu’un d’autre) avez demandé la réinitialisation d’un mot de passe. Veuillez effectuer une requête à l’adresse suivante : \n\n ${resetUrl}`;
 
   try {
     await sendEmail({
       email: user.email,
-      subject: 'Password reset token',
+      subject: 'Jeton de réinitialisation du mot de passe.',
       message
     });
 
-    res.status(200).json({ success: true, data: 'Email sent' });
+    res.status(200).json({ success: true, data: 'E-mail envoyé' });
   } catch (err) {
     console.log(err);
     user.resetPasswordToken = undefined;
@@ -153,7 +153,7 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
 
     await user.save({ validateBeforeSave: false });
 
-    return next(new ErrorResponse('Email could not be sent', 500));
+    return next(new ErrorResponse('Impossible d’envoyer l’e-mail', 500));
   }
 
   res.status(200).json({
@@ -178,7 +178,7 @@ const resetPassword = asyncHandler(async (req, res, next) => {
   });
 
   if (!user) {
-    return next(new ErrorResponse('Invalid token', 400));
+    return next(new ErrorResponse('Token invalide', 400));
   }
 
   // Set new password

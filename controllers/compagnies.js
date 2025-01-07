@@ -29,7 +29,7 @@ export const getCompagny = asyncHandler(async (req, res, next) => {
 
   if (!compagny) {
     return next(
-      new ErrorResponse(`No compagny found with the id of ${req.params.id}`, 404)
+      new ErrorResponse(`Compagnie introuvable avec l’identifiant ${req.params.id}`, 404)
     );
   }
 
@@ -67,7 +67,7 @@ export const updateCompagny = asyncHandler(async (req, res, next) => {
 
   if (!compagny) {
     return next(
-      new ErrorResponse(`No compagny found with the id of ${req.params.id}`, 404)
+      new ErrorResponse(`Compagnie introuvable avec l’identifiant ${req.params.id}`, 404)
     );
   }
 
@@ -92,7 +92,7 @@ export const deleteCompagny = asyncHandler(async (req, res, next) => {
 
   if (!compagny) {
     return next(
-      new ErrorResponse(`No compagny found with the id of ${req.params.id}`, 404)
+      new ErrorResponse(`Compagnie introuvable avec l’identifiant ${req.params.id}`, 404)
     );
   }
 
