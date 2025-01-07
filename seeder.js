@@ -80,6 +80,8 @@ const deleteData = async () => {
   }
 };
 
+
+
 // Récupère l’argument passé en ligne de commande
 if (process.argv[2] === '-i') {
   importData();

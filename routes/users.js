@@ -17,8 +17,8 @@ import advancedResults from '../middleware/advancedResults.js';
 import {protect, authorize} from '../middleware/auth.js'
 
 
-router.use(protect);
-router.use(authorize('admin'));
+// router.use(protect);
+// router.use(authorize('admin'));
 
 router
   .route('/')

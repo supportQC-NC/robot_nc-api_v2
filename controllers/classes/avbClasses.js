@@ -31,5 +31,4 @@ const getAvbClasse = asyncHandler(async (req, res, next) => {
 export {
   getAvbClasses,
   getAvbClasse,
-
 };
