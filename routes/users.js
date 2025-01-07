@@ -6,7 +6,7 @@ import {
   createUser,
   updateUser,
   deleteUser
-}  from '../controllers/users';
+}  from '../controllers/users.js';
 
 
 import User from '../models/User.js'
