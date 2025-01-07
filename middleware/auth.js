@@ -6,7 +6,7 @@ import User from '../models/User.js'
 
 
 // Protect routes
-exports.protect = asyncHandler(async (req, res, next) => {
+const protect = asyncHandler(async (req, res, next) => {
   let token;
 
   if (
@@ -52,3 +52,7 @@ exports.authorize = (...roles) => {
     next();
   };
 };
+
+
+
+export default protect;
