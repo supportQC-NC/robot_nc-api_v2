@@ -13,7 +13,7 @@ import Review from '../models/Review.js';
 
 const router = express.Router({ mergeParams: true });
 
-import advancedResults from '../middleware/advancedResults';
+import advancedResults from '../middleware/advancedResults.js';
 import {protect, authorize} from '../middleware/auth.js'
 
 
