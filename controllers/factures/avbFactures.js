@@ -14,7 +14,7 @@ const getAvbFacture = asyncHandler(async (req, res, next) => {
   const facture = await AvbFacture.findById(req.params.id);
   if (!facture) {
     return next(
-      new ErrorResponse(`Facture not found with id of ${req.params.id}`, 404)
+      new ErrorResponse(`Facture non trouvé avec l'id : ${req.params.id}`, 404)
     );
   }
   res.status(200).json({ success: true, data: facture });

@@ -16,7 +16,7 @@ const getLdClasse = asyncHandler(async (req, res, next) => {
   const classe = await LdClasse.findById(req.params.id);
   if (!classe) {
     return next(
-      new ErrorResponse(`Classe not found with id of ${req.params.id}`, 404)
+      new ErrorResponse(`Classe non trouvé avec l'id : ${req.params.id}`, 404)
     );
   }
   res.status(200).json({ success: true, data: classe });

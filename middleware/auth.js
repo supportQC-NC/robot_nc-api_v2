@@ -25,7 +25,7 @@ export const protect = asyncHandler(async (req, res, next) => {
 
   // Si aucun token n'a été trouvé
   if (!token) {
-    return next(new ErrorResponse('Not authorized to access this route', 401));
+    return next(new ErrorResponse("Vous n'êtes pas autorisé à accéder à cette route", 401));
   }
 
   try {
@@ -36,12 +36,12 @@ export const protect = asyncHandler(async (req, res, next) => {
     req.user = await User.findById(decoded.id);
 
     if (!req.user) {
-      return next(new ErrorResponse('User does not exist', 401));
+      return next(new ErrorResponse("L'utilisateur n'existe pas", 401));
     }
 
     next();
   } catch (err) {
-    return next(new ErrorResponse('Not authorized to access this route', 401));
+    return next(new ErrorResponse("Vous n'êtes pas autorisé à accéder à cette route", 401));
   }
 });
 
@@ -55,7 +55,7 @@ export const authorize = (...roles) => {
     if (!roles.includes(req.user.role)) {
       return next(
         new ErrorResponse(
-          `User role ${req.user.role} is not authorized to access this route`,
+          `Le rôle de l'utilisateur ${req.user.role} n'est pas autorisé à accéder à cette route.`,
           403
         )
       );

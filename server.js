@@ -159,10 +159,14 @@ if (process.env.NODE_ENV === "development") {
   }
 
 
+
+
   // Route principale pour tester l'API
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'API Robot-NC fonctionne.' });
 });
+
+
 
 
 // Mount Routers 
@@ -297,7 +301,6 @@ app.use('/api/v2/vkp/fournisseurs', vkpFournisseurs)
 app.use('/api/v2/vkp/factures', vkpFactures)
 app.use('/api/v2/vkp/facture-details', vkpFactureDetails)
 app.use('/api/v2/vkp/tiers', vkpTiers)
-
 
 
 

@@ -18,7 +18,7 @@ const getMeareArticle = asyncHandler(async (req, res, next) => {
   const article = await MeareArticle.findById(req.params.id);
   if (!article) {
     return next(
-      new ErrorResponse(`Article not found with id of ${req.params.id}`, 404)
+      new ErrorResponse(`Article non trouvé avec l'id : ${req.params.id}`, 404)
     );
   }
   res.status(200).json({ success: true, data: article });

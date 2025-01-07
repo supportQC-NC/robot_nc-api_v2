@@ -14,7 +14,7 @@ const getMeareClient = asyncHandler(async (req, res, next) => {
   const client = await MeareClient.findById(req.params.id);
   if (!client) {
     return next(
-      new ErrorResponse(`Client not found with id of ${req.params.id}`, 404)
+      new ErrorResponse(`Client non trouvé avec l'id : ${req.params.id}`, 404)
     );
   }
   res.status(200).json({ success: true, data: client });

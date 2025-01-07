@@ -9,13 +9,13 @@ const errorHandler = (err, req, res, next) => {
   console.log(err);
   // Mongoose bad ObjectId
   if (err.name === "CastError") {
-    const message = `Resource not found with id of ${err.value}`;
+    const message = `Ressource non trouvée avec l'id : ${err.value}`;
     error = new ErrorResponse(message, 404);
   }
 
   // Mongoose duplicate key
   if (err.code === 11000) {
-    const message = "Duplicate field value entered";
+    const message = "Valeur de champ en double saisie";
     error = new ErrorResponse(message, 400);
   }
 
@@ -27,7 +27,7 @@ const errorHandler = (err, req, res, next) => {
 
   res.status(err.statusCode || 500).json({
     success: false,
-    error: error.message || "Server Error",
+    error: error.message || "Erreur du serveur",
   });
 };
 

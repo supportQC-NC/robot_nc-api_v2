@@ -14,7 +14,7 @@ const getDqFactureDetail = asyncHandler(async (req, res, next) => {
   const factureDetail = await DqFactureDetails.findById(req.params.id);
   if (!factureDetail) {
     return next(
-      new ErrorResponse(`Facture not found with id of ${req.params.id}`, 404)
+      new ErrorResponse(`Details de la facture non trouvé avec l'id :  ${req.params.id}`, 404)
     );
   }
   res.status(200).json({ success: true, data: factureDetail });

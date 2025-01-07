@@ -17,7 +17,7 @@ const getHdTier = asyncHandler(async (req, res, next) => {
   if (!tier) {
     return next(
       new ErrorResponse(
-        `Tier not found with id of ${req.params.id}`,
+        `Tier non trouvé avec l'id : ${req.params.id}`,
         404
       )
     );

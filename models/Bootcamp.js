@@ -21,7 +21,7 @@ const BootcampSchema = new mongoose.Schema(
       type: String,
       match: [
         /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
-        'Please use a valid URL with HTTP or HTTPS'
+        'Veuillez utiliser une URL valide avec HTTP ou HTTPS'
       ]
     },
     phone: {
@@ -32,7 +32,7 @@ const BootcampSchema = new mongoose.Schema(
       type: String,
       match: [
         /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        'Please add a valid email'
+        'Veuillez ajouter un email valide'
       ]
     },
    

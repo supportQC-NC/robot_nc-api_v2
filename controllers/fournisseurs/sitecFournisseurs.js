@@ -17,7 +17,7 @@ const getSitecFournisseur = asyncHandler(async (req, res, next) => {
   if (!fournisseur) {
     return next(
       new ErrorResponse(
-        `Fournisseur not found with id of ${req.params.id}`,
+        `Fournisseur non trouvé avec l'id : ${req.params.id}`,
         404
       )
     );
