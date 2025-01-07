@@ -1,7 +1,7 @@
 
 import jwt from 'jsonwebtoken'
-import asyncHandler from './async';
-import ErrorResponse from '../utils/errorResponse';
+import asyncHandler from './async.js';
+import ErrorResponse from '../utils/errorResponse.js';
 import User from '../models/User.js'
 
 
