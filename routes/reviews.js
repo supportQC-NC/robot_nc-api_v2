@@ -9,7 +9,7 @@ import {
 } from  '../controllers/reviews.js';
 
 
-import Review from '../models/Review';
+import Review from '../models/Review.js';
 
 const router = express.Router({ mergeParams: true });
 
