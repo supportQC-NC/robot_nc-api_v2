@@ -39,7 +39,7 @@ const protect = asyncHandler(async (req, res, next) => {
 });
 
 // Grant access to specific roles
-exports.authorize = (...roles) => {
+const authorize = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       return next(
@@ -55,4 +55,7 @@ exports.authorize = (...roles) => {
 
 
 
-export default protect;
+export {
+  protect,
+  authorize
+}
