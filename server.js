@@ -8,6 +8,7 @@ import errorHandler from "./middleware/error.js"; // Middleware d'erreurs
 
 
 // Route Files
+import auth from './routes/auth';
 import bootcamps from './routes/bootcamps.js'
 import courses from './routes/courses.js'
 import compagnies from './routes/compagnies.js'
@@ -168,6 +169,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v2/bootcamps', bootcamps)
 app.use('/api/v2/courses', courses)
+app.use('/api/v1/auth', auth);
 app.use('/api/v2/companies', compagnies)
 app.use('/api/v2/reviews', reviews)
 app.use('/api/v2/users', users)
