@@ -21,6 +21,7 @@ dotenv.config({ path: './config/config.env' });
 // Importe les modèles
 import Bootcamp from './models/Bootcamp.js';
 import Course from './models/Course.js';
+import Compagny from './models/Company.js';
 import User from './models/User.js';
 import Review from './models/Review.js';
 
@@ -40,6 +41,9 @@ const users = JSON.parse(
   fs.readFileSync(path.join(__dirname, '_data', 'users.json'), 'utf-8')
 );
 
+const compagnies = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '_data', 'compagnies.json'), 'utf-8')
+);
 const reviews = JSON.parse(
   fs.readFileSync(path.join(__dirname, '_data', 'reviews.json'), 'utf-8')
 );
@@ -49,6 +53,7 @@ const importData = async () => {
   try {
     await Bootcamp.create(bootcamps);
     await Course.create(courses);
+    await Compagny.create(compagnies);
     await User.create(users);
     await Review.create(reviews);
 
@@ -66,6 +71,7 @@ const deleteData = async () => {
     await Course.deleteMany();
     await User.deleteMany();
     await Review.deleteMany();
+    await Compagny.deleteMany();
 
     console.log('Data Destroyed...'.red.inverse);
     process.exit();
