@@ -6,7 +6,7 @@ import {
   addReview,
   updateReview,
   deleteReview
-} from  '../controllers/reviews';
+} from  '../controllers/reviews.js';
 
 
 import Review from '../models/Review';
