@@ -1,6 +1,8 @@
-const ErrorResponse = require('../utils/errorResponse');
-const asyncHandler = require('../middleware/async');
-const User = require('../models/User');
+
+import ErrorResponse from '../utils/errorResponse.js';
+import asyncHandler from '../middleware/async.js'
+import User from '../models/User.js'
+
 
 // @desc      Get all users
 // @route     GET /api/v1/auth/users

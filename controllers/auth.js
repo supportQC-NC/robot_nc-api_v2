@@ -1,8 +1,8 @@
 
 import crypto from 'crypto'
-import ErrorResponse from '../utils/errorResponse';
-import asyncHandler from '../middleware/async';
-import sendEmail from '../utils/sendEmail';
+import ErrorResponse from '../utils/errorResponse.js';
+import asyncHandler from '../middleware/async.js';
+import sendEmail from '../utils/sendEmail.js';
 import User from  '../models/User.js'
 
 

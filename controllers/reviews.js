@@ -1,5 +1,5 @@
-import ErrorResponse from "../utils/errorResponse";
-import asyncHandler from "../middleware/async";
+import ErrorResponse from "../utils/errorResponse.js";
+import asyncHandler from "../middleware/async.js";
 import Review from "../models/Review.js";
 import Bootcamp from "../models/Bootcamp.js";
 
