@@ -4,9 +4,13 @@ import {
   getAwArticle,
 } from "../../controllers/articles/awArticles.js";
 
+
+import AWArticles from '../../models/bases/AW/Article.js'
+import advancedResults from "../../middleware/advancedResults.js";
 const router = express.Router();
 
-router.route("/").get(getAwArticles);
+router.route("/")
+.get(advancedResults(AWArticles), getAwArticles)
 
 router.route("/:id").get(getAwArticle);
 
