@@ -2,6 +2,7 @@
 import crypto from 'crypto'
 import ErrorResponse from '../utils/errorResponse.js';
 import asyncHandler from '../middleware/async.js';
+import forgotPasswordTemplate from '../mail/templates/forgotPassword';
 import sendEmail from '../utils/sendEmail.js';
 import User from  '../models/User.js'
 
@@ -119,6 +120,7 @@ const updatePassword = asyncHandler(async (req, res, next) => {
 // @desc      Forgot password
 // @route     POST /api/v1/auth/forgotpassword
 // @access    Public
+
 const forgotPassword = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ email: req.body.email });
 
@@ -131,18 +133,17 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
 
   await user.save({ validateBeforeSave: false });
 
-  // Create reset url
-  const resetUrl = `${req.protocol}://${req.get(
-    'host'
-  )}/api/v1/auth/resetpassword/${resetToken}`;
+  // Generate reset URL
+  const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/resetpassword/${resetToken}`;
 
-  const message = `Vous recevez cet e-mail parce que vous (ou quelqu’un d’autre) avez demandé la réinitialisation d’un mot de passe. Veuillez effectuer une requête à l’adresse suivante : \n\n ${resetUrl}`;
+  // Get email template
+  const { subject, message } = forgotPasswordTemplate(resetUrl);
 
   try {
     await sendEmail({
       email: user.email,
-      subject: 'Jeton de réinitialisation du mot de passe.',
-      message
+      subject,
+      message,
     });
 
     res.status(200).json({ success: true, data: 'E-mail envoyé' });
@@ -155,11 +156,6 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
 
     return next(new ErrorResponse('Impossible d’envoyer l’e-mail', 500));
   }
-
-  res.status(200).json({
-    success: true,
-    data: user
-  });
 });
 
 // @desc      Reset password

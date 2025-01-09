@@ -87,7 +87,6 @@ export const updateCompagny = asyncHandler(async (req, res, next) => {
  * @route     DELETE /api/v1/compagnies/:id
  * @access    Private
  */
-
 export const deleteCompagny = asyncHandler(async (req, res, next) => {
   const compagny = await Compagny.findByIdAndDelete(req.params.id);
   if (!compagny) {
