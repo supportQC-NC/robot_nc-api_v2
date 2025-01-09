@@ -25,7 +25,9 @@ const getCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(`course introuvable avec l’identifiant ${req.params.id}`),
+      new ErrorResponse(
+        `course introuvable avec l’identifiant ${req.params.id}`
+      ),
       404
     );
   }
@@ -35,8 +37,6 @@ const getCourse = asyncHandler(async (req, res, next) => {
     data: course,
   });
 });
-
-
 
 // @desc      Add course
 // @route     POST /api/v1/bootcamps/:bootcampId/courses
@@ -49,7 +49,9 @@ const addCourse = asyncHandler(async (req, res, next) => {
 
   if (!bootcamp) {
     return next(
-      new ErrorResponse(`course introuvable avec l’identifiant ${req.params.bootcampId}`),
+      new ErrorResponse(
+        `course introuvable avec l’identifiant ${req.params.bootcampId}`
+      ),
       404
     );
   }
@@ -80,7 +82,9 @@ const updateCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(`course introuvable avec l’identifiant ${req.params.id}`),
+      new ErrorResponse(
+        `course introuvable avec l’identifiant ${req.params.id}`
+      ),
       404
     );
   }
@@ -100,14 +104,11 @@ const updateCourse = asyncHandler(async (req, res, next) => {
     runValidators: true,
   });
 
-
-
   res.status(200).json({
     success: true,
     data: course,
   });
 });
-
 
 // @desc      Delete course
 // @route     DELETE /api/v1/courses/:id
@@ -117,7 +118,9 @@ const deleteCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(`Aucun cours trouvé avec l’identifiant. ${req.params.id}`),
+      new ErrorResponse(
+        `Aucun cours trouvé avec l’identifiant. ${req.params.id}`
+      ),
       404
     );
   }
