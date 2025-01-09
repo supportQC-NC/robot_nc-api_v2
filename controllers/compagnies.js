@@ -87,19 +87,13 @@ export const updateCompagny = asyncHandler(async (req, res, next) => {
  * @route     DELETE /api/v1/compagnies/:id
  * @access    Private
  */
-export const deleteCompagny = asyncHandler(async (req, res, next) => {
-  const compagny = await Compagny.findById(req.params.id);
 
+const deleteCompagny = asyncHandler(async (req, res, next) => {
+  const compagny = await Compagny.findByIdAndDelete(req.params.id);
   if (!compagny) {
     return next(
-      new ErrorResponse(`Compagnie introuvable avec l’identifiant ${req.params.id}`, 404)
+      new ErrorResponse(`Compagny introuvable avec l’identifiant : ${req.params.id}`, 404)
     );
   }
-
-  await compagny.remove();
-
-  res.status(200).json({
-    success: true,
-    data: {},
-  });
+  res.status(200).json({ success: true, data: {} });
 });

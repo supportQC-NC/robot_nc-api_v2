@@ -5,13 +5,13 @@ const CompagnySchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Veuillez fournir le nom de la filiale"],
+      required: [true, "Veuillez fournir le nom de la compagnie"],
       maxlength: [50, "Le nom ne peut pas dépasser 50 caractères"],
       trim: true,
     },
     acronyme: {
       type: String,
-      required: [true, "Veuillez fournir l'acronyme de la filiale"],
+      required: [true, "Veuillez fournir l'acronyme de la compagnie"],
       trim: true,
       maxlength: [20, "L'acronyme ne peut pas dépasser 5 caractères"],
     },
@@ -29,7 +29,7 @@ const CompagnySchema = new mongoose.Schema(
     },
     address: {
       type: String,
-      required: [true, "Veuillez fournir l'adresse de la filiale"],
+      required: [true, "Veuillez fournir l'adresse de la compagny"],
       maxlength: [100, "L'adresse ne peut pas dépasser 100 caractères"],
       trim: true,
     },
