@@ -1,4 +1,4 @@
-export const forgotPasswordTemplate = (resetUrl) => {
+const forgotPasswordTemplate = (resetUrl) => {
     const htmlContent = `
       <!DOCTYPE html>
       <html lang="en">
@@ -71,3 +71,5 @@ export const forgotPasswordTemplate = (resetUrl) => {
     };
   };
   
+
+  export default forgotPasswordTemplate
