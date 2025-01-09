@@ -136,8 +136,7 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
   // Generate reset URL
   const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/resetpassword/${resetToken}`;
 
-  // Get email template
-  const { subject, message } = forgotPasswordTemplate(resetUrl);
+  const { subject, message, html } = forgotPasswordTemplate(resetUrl);
 
   try {
     await sendEmail({
