@@ -5,6 +5,7 @@ import asyncHandler from '../middleware/async.js';
 import forgotPasswordTemplate from '../mail/forgotPassword.js';
 import sendEmail from '../utils/sendEmail.js';
 import User from  '../models/User.js'
+import welcomeEmailTemplate from '../mail/welcomeEmail';
 
 
 
@@ -19,9 +20,26 @@ const register = asyncHandler(async (req, res, next) => {
     name,
     email,
     password,
-    role
+    role,
   });
 
+  // Generate welcome email template
+  const { subject, message, html } = welcomeEmailTemplate(name);
+
+  try {
+    // Send welcome email
+    await sendEmail({
+      email: user.email,
+      subject,
+      message, // Plain text version
+      html,    // HTML version
+    });
+    console.log('Welcome email sent to:', user.email);
+  } catch (err) {
+    console.error('Error sending welcome email:', err.message);
+  }
+
+  // Send token response (authentication token, if needed)
   sendTokenResponse(user, 200, res);
 });
 

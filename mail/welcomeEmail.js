@@ -1,14 +1,14 @@
-const forgotPasswordTemplate = (resetUrl) => {
+const welcomeEmailTemplate = (userName) => {
     return {
-      subject: 'Réinitialisation de mot de passe - ROBOT NC',
-      message: `Vous recevez cet e-mail parce que vous avez demandé une réinitialisation de mot de passe. Cliquez ici : ${resetUrl}`, // Texte brut
+      subject: 'Bienvenue chez ROBOT NC !',
+      message: `Bonjour ${userName}, bienvenue dans l'application ROBOT NC !`, // Texte brut
       html: `
         <!DOCTYPE html>
         <html lang="fr">
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Réinitialisation de mot de passe</title>
+          <title>Bienvenue chez ROBOT NC</title>
           <style>
             body {
               margin: 0;
@@ -50,16 +50,9 @@ const forgotPasswordTemplate = (resetUrl) => {
               margin-bottom: 20px;
               line-height: 1.5;
             }
-            .email-button {
-              display: inline-block;
-              background: #1e90ff;
-              color: #ffffff;
-              padding: 10px 20px;
-              text-decoration: none;
-              border-radius: 5px;
-              font-size: 16px;
+            .email-body .highlight {
               font-weight: bold;
-              margin-bottom: 20px;
+              color: #1e90ff;
             }
             .email-footer {
               padding: 10px 20px;
@@ -80,11 +73,10 @@ const forgotPasswordTemplate = (resetUrl) => {
               <h1>ROBOT NC</h1>
             </div>
             <div class="email-body">
-              <h2>Réinitialisation de votre mot de passe</h2>
-              <p>Vous recevez cet e-mail parce que vous (ou quelqu’un d’autre) avez demandé la réinitialisation de votre mot de passe pour l'application <strong>ROBOT NC</strong>.</p>
-              <p>Veuillez cliquer sur le bouton ci-dessous pour réinitialiser votre mot de passe :</p>
-              <a href="${resetUrl}" class="email-button">Réinitialiser mon mot de passe</a>
-              <p>Si vous n'avez pas demandé cette réinitialisation, veuillez ignorer cet e-mail.</p>
+              <h2>Bienvenue, ${userName} !</h2>
+              <p>Nous sommes ravis de vous compter parmi les utilisateurs de <strong>ROBOT NC</strong>.</p>
+              <p>Avec ROBOT NC, vous pouvez gérer vos tâches efficacement et découvrir un monde de fonctionnalités adaptées à vos besoins.</p>
+              <p class="highlight">N'hésitez pas à explorer votre tableau de bord et à configurer votre profil dès maintenant !</p>
             </div>
             <div class="email-footer">
               <p>Besoin d'aide ? Contactez-nous à <a href="mailto:support@robot-nc.com">support@robot-nc.com</a>.</p>
@@ -97,5 +89,5 @@ const forgotPasswordTemplate = (resetUrl) => {
     };
   };
   
-  export default forgotPasswordTemplate;
+  export default welcomeEmailTemplate;
   
