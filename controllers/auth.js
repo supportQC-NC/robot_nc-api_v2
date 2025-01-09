@@ -2,7 +2,7 @@
 import crypto from 'crypto'
 import ErrorResponse from '../utils/errorResponse.js';
 import asyncHandler from '../middleware/async.js';
-import forgotPasswordTemplate from '../mail/forgotPassword';
+import forgotPasswordTemplate from '../mail/forgotPassword.js';
 import sendEmail from '../utils/sendEmail.js';
 import User from  '../models/User.js'
 
