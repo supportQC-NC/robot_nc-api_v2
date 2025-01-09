@@ -1,4 +1,4 @@
-import Log from "../models/Log"; // Importez le modèle Log
+import Log from "../models/Log.js"; // Importez le modèle Log
 
 /**
  * Fonction pour créer un log

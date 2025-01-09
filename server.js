@@ -14,6 +14,7 @@ import courses from './routes/courses.js'
 import compagnies from './routes/compagnies.js'
 import reviews from './routes/reviews.js'
 import users from './routes/users.js'
+import logs from './routes/logs.js'
 
 //AVB
 import avbArticles from './routes/articles/avbArticles.js'
@@ -178,6 +179,7 @@ app.use('/api/v2/auth', auth);
 app.use('/api/v2/companies', compagnies)
 app.use('/api/v2/reviews', reviews)
 app.use('/api/v2/users', users)
+app.use('/api/v2/logs', logs)
 
 
 // AVB ROUTES
