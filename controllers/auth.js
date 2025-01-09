@@ -143,6 +143,7 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
       email: user.email,
       subject,
       message,
+      html
     });
 
     res.status(200).json({ success: true, data: 'E-mail envoyé' });
