@@ -67,6 +67,7 @@ const forgotPasswordTemplate = (resetUrl) => {
   
     return {
       subject: 'Jeton de réinitialisation du mot de passe',
+      message: "Vous recevez cet e-mail parce que vous (ou quelqu’un d’autre) avez demandé la réinitialisation de votre mot de passe. Si vous n'avez pas demandé cette réinitialisation, veuillez ignorer cet e-mail.",
       html: htmlContent, // HTML for the e-mail body
     };
   };
