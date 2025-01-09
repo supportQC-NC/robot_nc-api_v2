@@ -88,7 +88,7 @@ export const updateCompagny = asyncHandler(async (req, res, next) => {
  * @access    Private
  */
 
-const deleteCompagny = asyncHandler(async (req, res, next) => {
+export const deleteCompagny = asyncHandler(async (req, res, next) => {
   const compagny = await Compagny.findByIdAndDelete(req.params.id);
   if (!compagny) {
     return next(
