@@ -2,12 +2,24 @@ import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
 import DqClient from "../../models/bases/DQ/Client.js";
 
-// Get all DQ Clients
-const getDqClients = asyncHandler(async (req, res, next) => {
-  const clients = await DqClient.find();
 
-  res.status(200).json({ success: true, count: clients.length, data: clients });
+
+const getDqClients = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await DqClient.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
 
 // Get single DQ client
 const getDqClient = asyncHandler(async (req, res, next) => {

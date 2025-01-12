@@ -4,10 +4,19 @@ import QcClient from "../../models/bases/QC/Client.js";
 
 // Get all QC Clients
 const getQcClients = asyncHandler(async (req, res, next) => {
-  const clients = await QcClient.find();
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
 
-  res.status(200).json({ success: true, count: clients.length, data: clients });
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await QcClient.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
 
 // Get single QC client
 const getQcClient = asyncHandler(async (req, res, next) => {

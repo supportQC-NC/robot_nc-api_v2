@@ -2,12 +2,24 @@ import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
 import LeBroussardClient from "../../models/bases/LE_BROUSSARD/Client.js";
 
-// Get all LEBROUSSARD Clients
-const getLeBroussardClients = asyncHandler(async (req, res, next) => {
-  const clients = await LeBroussardClient.find();
 
-  res.status(200).json({ success: true, count: clients.length, data: clients });
+
+const getLeBroussardClients = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await LeBroussardClient.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
 
 // Get single LEBROUSSARD client
 const getLeBroussardClient = asyncHandler(async (req, res, next) => {

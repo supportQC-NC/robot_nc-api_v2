@@ -3,10 +3,13 @@ import {
   getDqClients,
   getDqClient,
 } from "../../controllers/clients/dqClients.js";
+import advancedResults from "../../middleware/advancedResults.js";
+import DQClients from '../../models/bases/DQ/Client.js'
 
 const router = express.Router();
 
-router.route("/").get(getDqClients);
+router.route("/")
+.get(advancedResults(DQClients), getQqClients)
 
 router.route("/:id").get(getDqClient);
 

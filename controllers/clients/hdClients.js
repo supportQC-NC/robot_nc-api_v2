@@ -3,11 +3,24 @@ import asyncHandler from "../../middleware/async.js";
 import HdClient from "../../models/bases/HD/Client.js";
 
 // Get all HD Clients
-const getHdClients = asyncHandler(async (req, res, next) => {
-  const clients = await HdClient.find();
 
-  res.status(200).json({ success: true, count: clients.length, data: clients });
+const getHdClients = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await HdClient.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
+
 
 // Get single HD client
 const getHdClient = asyncHandler(async (req, res, next) => {
