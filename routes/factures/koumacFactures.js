@@ -4,9 +4,15 @@ import {
   getKoumacFacture,
 } from "../../controllers/factures/koumacFactures.js";
 
+
+import advancedResults from "../../middleware/advancedResults.js";
+import KOUMACFactures from '../../models/bases/KOUMAC/Facture.js'
+
+
 const router = express.Router();
 
-router.route("/").get(getKoumacFactures);
+router.route("/")
+.get(advancedResults(KOUMACFactures), getKoumacFactures)
 
 router.route("/:id").get(getKoumacFacture);
 

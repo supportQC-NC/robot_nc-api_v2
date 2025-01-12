@@ -3,11 +3,23 @@ import asyncHandler from "../../middleware/async.js";
 import MeareFacture from "../../models/bases/MEARE/Facture.js";
 
 // Get all MEARE Factures
-const getMeareFactures = asyncHandler(async (req, res, next) => {
-  const factures = await MeareFacture.find();
 
-  res.status(200).json({ success: true, count: factures.length, data: factures });
+const getMeareFactures = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await MeareFacture.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
 
 // Get single Meare facture
 const getMeareFacture = asyncHandler(async (req, res, next) => {

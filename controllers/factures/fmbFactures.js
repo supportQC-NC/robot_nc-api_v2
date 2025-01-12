@@ -3,11 +3,26 @@ import asyncHandler from "../../middleware/async.js";
 import FmbFacture from "../../models/bases/FMB/Facture.js";
 
 // Get all FMB Factures
-const getFmbFactures = asyncHandler(async (req, res, next) => {
-  const factures = await FmbFacture.find();
 
-  res.status(200).json({ success: true, count: factures.length, data: factures });
+
+
+const getFmbFactures = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await FmbFacture.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
+
 
 // Get single Fmb facture
 const getFmbFacture = asyncHandler(async (req, res, next) => {

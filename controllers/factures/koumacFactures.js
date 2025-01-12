@@ -3,11 +3,23 @@ import asyncHandler from "../../middleware/async.js";
 import KoumacFacture from "../../models/bases/KOUMAC/Facture.js";
 
 // Get all KOUMAC Factures
-const getKoumacFactures = asyncHandler(async (req, res, next) => {
-  const factures = await KoumacFacture.find();
 
-  res.status(200).json({ success: true, count: factures.length, data: factures });
+const getKoumacFactures = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await KoumacFacture.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
 
 // Get single Koumac facture
 const getKoumacFacture = asyncHandler(async (req, res, next) => {

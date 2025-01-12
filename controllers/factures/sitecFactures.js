@@ -3,11 +3,22 @@ import asyncHandler from "../../middleware/async.js";
 import SitecFacture from "../../models/bases/SITEC/Facture.js";
 
 // Get all SITEC Factures
-const getSitecFactures = asyncHandler(async (req, res, next) => {
-  const factures = await SitecFacture.find();
 
-  res.status(200).json({ success: true, count: factures.length, data: factures });
+const getSitecFactures = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await SitecFacture.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
 
 // Get single Sitec facture
 const getSitecFacture = asyncHandler(async (req, res, next) => {

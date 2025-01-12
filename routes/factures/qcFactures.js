@@ -4,9 +4,13 @@ import {
   getQcFacture,
 } from "../../controllers/factures/qcFactures.js";
 
+import advancedResults from "../../middleware/advancedResults.js";
+import QCFactures from '../../models/bases/QC/Facture.js'
+
 const router = express.Router();
 
-router.route("/").get(getQcFactures);
+router.route("/")
+.get(advancedResults(QCFactures), getQcFactures)
 
 router.route("/:id").get(getQcFacture);
 
