@@ -9,7 +9,7 @@ import DQClients from '../../models/bases/DQ/Client.js'
 const router = express.Router();
 
 router.route("/")
-.get(advancedResults(DQClients), getQqClients)
+.get(advancedResults(DQClients), getDqClients)
 
 router.route("/:id").get(getDqClient);
 
