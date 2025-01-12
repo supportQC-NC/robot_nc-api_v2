@@ -4,8 +4,8 @@ import {
   getDqArticle,
 } from "../../controllers/articles/dqArticles.js";
 
-import DQArticles from '../../models/bases/DQ/Article.js'
 import advancedResults from "../../middleware/advancedResults.js";
+import DQArticles from '../../models/bases/DQ/Article.js'
 
 const router = express.Router();
 
