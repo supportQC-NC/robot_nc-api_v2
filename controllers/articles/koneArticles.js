@@ -3,14 +3,19 @@ import asyncHandler from "../../middleware/async.js";
 import KoneArticle from "../../models/bases/KONE/Article.js";
 
 // Get all KONE Articles
-const getKoneArticles = asyncHandler(async (req, res, next) => {
+const getKoneArticles  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
   const articles = await KoneArticle.find();
 
   res
     .status(200)
     .json({ success: true, count: articles.length, data: articles });
 });
-
 
 
 // Get single KONE article

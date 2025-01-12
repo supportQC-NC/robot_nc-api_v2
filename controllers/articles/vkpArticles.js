@@ -2,8 +2,14 @@ import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
 import VkpArticle from "../../models/bases/VKP/Article.js";
 
-// Get all VKP Articles
-const getVkpArticles = asyncHandler(async (req, res, next) => {
+
+const  getVkpArticles = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
   const articles = await VkpArticle.find();
 
   res

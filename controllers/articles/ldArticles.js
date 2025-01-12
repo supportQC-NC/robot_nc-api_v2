@@ -3,14 +3,19 @@ import asyncHandler from "../../middleware/async.js";
 import LdArticle from "../../models/bases/LD/Article.js";
 
 // Get all LD Articles
-const getLdArticles = asyncHandler(async (req, res, next) => {
+const getLdArticles  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
   const articles = await LdArticle.find();
 
   res
     .status(200)
     .json({ success: true, count: articles.length, data: articles });
 });
-
 
 
 // Get single LD article

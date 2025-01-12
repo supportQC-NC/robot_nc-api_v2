@@ -3,13 +3,20 @@ import asyncHandler from "../../middleware/async.js";
 import MeareArticle from "../../models/bases/MEARE/Article.js";
 
 // Get all MEARE Articles
-const getMeareArticles = asyncHandler(async (req, res, next) => {
+const getMeareArticles  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
   const articles = await MeareArticle.find();
 
   res
     .status(200)
     .json({ success: true, count: articles.length, data: articles });
 });
+
 
 
 

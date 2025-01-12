@@ -2,14 +2,24 @@ import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
 import PaitaBricolageArticle from "../../models/bases/PAITA_BRICOLAGE/Article.js";
 
-// Get all PAITABRICOLAGE Articles
-const getPaitaBricolageArticles = asyncHandler(async (req, res, next) => {
+
+
+const getPaitaBricolageArticles  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
   const articles = await PaitaBricolageArticle.find();
 
   res
     .status(200)
     .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
 
 
 

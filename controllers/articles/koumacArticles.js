@@ -3,7 +3,13 @@ import asyncHandler from "../../middleware/async.js";
 import KoumacArticle from "../../models/bases/KOUMAC/Article.js";
 
 // Get all KOUMAC Articles
-const getKoumacArticles = asyncHandler(async (req, res, next) => {
+const getKoumacArticles  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
   const articles = await KoumacArticle.find();
 
   res
