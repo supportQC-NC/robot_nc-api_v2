@@ -4,6 +4,12 @@ import AvbArticle from "../../models/bases/AVB/Article.js";
 
 // Get all AVB Articles
 const getAvbArticles = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
   const articles = await AvbArticle.find();
 
   res
