@@ -17,7 +17,7 @@ import users from './routes/users.js'
 import logs from './routes/logs.js'
 
 //AVB
-import avbArticles from './routes/articles/avbArticles.js'
+import avbArticles from './routes/articles/avbArticles.js' 
 import avbClasses from './routes/classes/avbClasses.js'
 import avbFournisseurs from './routes/fournisseurs/avbFournisseurs.js'
 import avbClients from './routes/clients/avbClients.js'
@@ -137,10 +137,8 @@ import vkpFactureDetails from './routes/factureDetails/vkpFactureDetails.js'
 import vkpTiers from './routes/tiers/vkpTiers.js'
 
 
-
-
 // Configuration des variables d'environnement
-dotenv.config({path: './config/config.env'});
+dotenv.config({ path: './config/config.env' });
 
 
 
@@ -157,13 +155,13 @@ connectDB();
 
 // Configuration des logs pour le mode développement
 if (process.env.NODE_ENV === "development") {
-    app.use(morgan("dev"));
-  }
+  app.use(morgan("dev"));
+}
 
 
 
 
-  // Route principale pour tester l'API
+// Route principale pour tester l'API
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'API Robot-NC fonctionne.' });
 });
@@ -295,6 +293,7 @@ app.use('/api/v2/sitec/fournisseurs', sitecFournisseurs)
 app.use('/api/v2/sitec/factures', sitecFactures)
 app.use('/api/v2/sitec/facture-details', sitecFactureDetails)
 app.use('/api/v2/sitec/tiers', sitecTiers)
+
 
 // VKP ROUTES
 app.use('/api/v2/vkp/classes', vkpClasses)

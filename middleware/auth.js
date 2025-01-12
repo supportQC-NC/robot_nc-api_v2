@@ -19,9 +19,9 @@ export const protect = asyncHandler(async (req, res, next) => {
     token = req.headers.authorization.split(' ')[1];
   }
   // Si tu souhaites vérifier aussi les cookies :
-  // else if (req.cookies.token) {
-  //   token = req.cookies.token;
-  // }
+  else if (req.cookies.token) {
+    token = req.cookies.token;
+  }
 
   // Si aucun token n'a été trouvé
   if (!token) {
