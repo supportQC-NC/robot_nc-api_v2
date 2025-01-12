@@ -3,10 +3,11 @@ import {
   getAvbClients,
   getAvbClient,
 } from "../../controllers/clients/avbClients.js";
-
+import AVBClients from '../../models/bases/AVB/Client.js'
 const router = express.Router();
 
-router.route("/").get(getAvbClients);
+router.route("/")
+.get(advancedResults(AVBClients), getAvbClients)
 
 router.route("/:id").get(getAvbClient);
 

@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.route("/")
 .get(advancedResults(AVBArticles), getAvbArticles)
-// .get(getAvbArticles);
+
 
 router.route("/:id").get(getAvbArticle);
 
