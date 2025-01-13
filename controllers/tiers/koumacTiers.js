@@ -3,13 +3,26 @@ import asyncHandler from "../../middleware/async.js";
 import KoumacTiers from "../../models/bases/KOUMAC/Tier.js";
 
 // Get all KOUMAC Tiers
-const getKoumacTiers = asyncHandler(async (req, res, next) => {
-  const tiers = await KoumacTiers.find();
+
+const getKoumacTiers  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await KoumacTiers.find();
 
   res
     .status(200)
-    .json({ success: true, count: tiers.length, data: tiers });
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
+
+
+
 
 // Get single KOUMAC tier
 const getKoumacTier = asyncHandler(async (req, res, next) => {

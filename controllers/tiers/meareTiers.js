@@ -3,12 +3,19 @@ import asyncHandler from "../../middleware/async.js";
 import MeareTiers from "../../models/bases/MEARE/Tier.js";
 
 // Get all MEARE Tiers
-const getMeareTiers = asyncHandler(async (req, res, next) => {
-  const tiers = await MeareTiers.find();
+
+const getMeareTiers  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await MeareTiers.find();
 
   res
     .status(200)
-    .json({ success: true, count: tiers.length, data: tiers });
+    .json({ success: true, count: articles.length, data: articles });
 });
 
 // Get single MEARE tier

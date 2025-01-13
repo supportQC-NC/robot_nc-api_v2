@@ -3,13 +3,22 @@ import asyncHandler from "../../middleware/async.js";
 import LdTiers from "../../models/bases/LD/Tier.js";
 
 // Get all LD Tiers
-const getLdTiers = asyncHandler(async (req, res, next) => {
-  const tiers = await LdTiers.find();
+
+const getLdTiers  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await LdTiers.find();
 
   res
     .status(200)
-    .json({ success: true, count: tiers.length, data: tiers });
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
 
 // Get single LD tier
 const getLdTier = asyncHandler(async (req, res, next) => {

@@ -3,13 +3,24 @@ import asyncHandler from "../../middleware/async.js";
 import PaitaBricolageTiers from "../../models/bases/PAITA_BRICOLAGE/Tier.js";
 
 // Get all PAITABRICOLAGE Tiers
-const getPaitaBricolageTiers = asyncHandler(async (req, res, next) => {
-  const tiers = await PaitaBricolageTiers.find();
+
+
+
+const getPaitaBricolageTiers  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await PaitaBricolageTiers.find();
 
   res
     .status(200)
-    .json({ success: true, count: tiers.length, data: tiers });
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
 
 // Get single PAITABRICOLAGE tier
 const getPaitaBricolageTier = asyncHandler(async (req, res, next) => {

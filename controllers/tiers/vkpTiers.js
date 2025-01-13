@@ -3,14 +3,20 @@ import asyncHandler from "../../middleware/async.js";
 import VkpTiers from "../../models/bases/VKP/Tier.js";
 
 // Get all VKP Tiers
-const getVkpTiers = asyncHandler(async (req, res, next) => {
-  const tiers = await VkpTiers.find();
+
+const getVkpTiers  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await VkpTiers.find();
 
   res
     .status(200)
-    .json({ success: true, count: tiers.length, data: tiers });          
+    .json({ success: true, count: articles.length, data: articles });
 });
-
 
 
 // Get single VKP tier

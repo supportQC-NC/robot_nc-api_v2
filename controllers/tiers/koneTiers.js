@@ -3,13 +3,22 @@ import asyncHandler from "../../middleware/async.js";
 import KoneTiers from "../../models/bases/KONE/Tier.js";
 
 // Get all KONE Tiers
-const getKoneTiers = asyncHandler(async (req, res, next) => {
-  const tiers = await KoneTiers.find();
+
+const getKoneTiers  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await KoneTiers.find();
 
   res
     .status(200)
-    .json({ success: true, count: tiers.length, data: tiers });
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
 
 // Get single KONE tier
 const getKoneTier = asyncHandler(async (req, res, next) => {
