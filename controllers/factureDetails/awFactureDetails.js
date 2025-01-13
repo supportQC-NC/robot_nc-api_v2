@@ -3,11 +3,24 @@ import asyncHandler from "../../middleware/async.js";
 import AwFactureDetails from "../../models/bases/AW/FactureDetail.js";
 
 // Get all AW Factures
-const getAwFactureDetails = asyncHandler(async (req, res, next) => {
-  const factureDetails = await AwFactureDetails.find();
 
-  res.status(200).json({ success: true, count: factureDetails.length, data: factureDetails });
+const getAwFactureDetails = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await AwFactureDetails.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
+
 
 // Get single AW client
 const getAwFactureDetail = asyncHandler(async (req, res, next) => {

@@ -4,9 +4,14 @@ import {
   getHdFactureDetail,
 } from "../../controllers/factureDetails/hdFactureDetails.js";
 
+
+import advancedResults from "../../middleware/advancedResults.js";
+import HDFactureDetails from '../../models/bases/HD/FactureDetail.js'
+
 const router = express.Router();
 
-router.route("/").get(getHdFactureDetails);
+router.route("/")
+.get(advancedResults(HDFactureDetails), getHdFactureDetails)
 
 router.route("/:id").get(getHdFactureDetail);
 

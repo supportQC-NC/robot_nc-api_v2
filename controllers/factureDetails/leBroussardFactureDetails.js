@@ -3,10 +3,19 @@ import asyncHandler from "../../middleware/async.js";
 import LeBroussardFactureDetails from "../../models/bases/LE_BROUSSARD/FactureDetail.js";
 
 // Get all LEBROUSSARD Factures
-const getLeBroussardFactureDetails = asyncHandler(async (req, res, next) => {
-  const factureDetails = await LeBroussardFactureDetails.find();
 
-  res.status(200).json({ success: true, count: factureDetails.length, data: factureDetails });
+const getLeBroussardFactureDetails = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await LeBroussardFactureDetails.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
 
 // Get single LEBROUSSARD client

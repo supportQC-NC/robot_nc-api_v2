@@ -3,11 +3,22 @@ import asyncHandler from "../../middleware/async.js";
 import VkpFactureDetails from "../../models/bases/VKP/FactureDetail.js";
 
 // Get all VKP Factures
-const getVkpFactureDetails = asyncHandler(async (req, res, next) => {
-  const factureDetails = await VkpFactureDetails.find();
 
-  res.status(200).json({ success: true, count: factureDetails.length, data: factureDetails });
+const getVkpFactureDetails = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await VkpFactureDetails.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
 
 // Get single VKP client
 const getVkpFactureDetail = asyncHandler(async (req, res, next) => {

@@ -4,9 +4,13 @@ import {
   getDqFactureDetail,
 } from "../../controllers/factureDetails/dqFactureDetails.js";
 
+import advancedResults from "../../middleware/advancedResults.js";
+import DQFactureDetails from '../../models/bases/DQ/FactureDetail.js'
+
 const router = express.Router();
 
-router.route("/").get(getDqFactureDetails);
+router.route("/")
+.get(advancedResults(DQFactureDetails), getDqFactureDetails)
 
 router.route("/:id").get(getDqFactureDetail);
 

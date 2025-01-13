@@ -4,9 +4,16 @@ import {
   getQcFactureDetail,
 } from "../../controllers/factureDetails/qcFactureDetails.js";
 
+
+import advancedResults from "../../middleware/advancedResults.js";
+import QCFactureDetails from '../../models/bases/QC/FactureDetail.js'
+
+
 const router = express.Router();
 
-router.route("/").get(getQcFactureDetails);
+router.route("/")
+.get(advancedResults(QCFactureDetails), getQcFactureDetails)
+
 
 router.route("/:id").get(getQcFactureDetail);
 

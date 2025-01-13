@@ -2,12 +2,23 @@ import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
 import DqFactureDetails from "../../models/bases/DQ/FactureDetail.js";
 
-// Get all AW Factures
-const getDqFactureDetails = asyncHandler(async (req, res, next) => {
-  const factureDetails = await DqFactureDetails.find();
+// Get all DQ Factures
 
-  res.status(200).json({ success: true, count: factureDetails.length, data: factureDetails });
+const getDqFactureDetails = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await DqFactureDetails.find();
+
+  res
+    .status(200)
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
 
 // Get single AW client
 const getDqFactureDetail = asyncHandler(async (req, res, next) => {

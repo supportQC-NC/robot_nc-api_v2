@@ -4,9 +4,13 @@ import {
   getKoneFactureDetail,
 } from "../../controllers/factureDetails/koneFactureDetails.js";
 
+
+import advancedResults from "../../middleware/advancedResults.js";
+import KONEFactureDetails from '../../models/bases/KONE/FactureDetail.js'
 const router = express.Router();
 
-router.route("/").get(getKoneFactureDetails);
+router.route("/")
+.get(advancedResults(KONEFactureDetails), getKoneFactureDetails)
 
 router.route("/:id").get(getKoneFactureDetail);
 
