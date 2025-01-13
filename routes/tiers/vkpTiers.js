@@ -3,7 +3,11 @@ import { getVkpTier, getVkpTiers } from "../../controllers/tiers/vkpTiers.js";
 
 const router = express.Router();
 
-router.route("/").get(getVkpTiers);
+import advancedResults from "../../middleware/advancedResults.js";
+import vkpTiers from '../../models/bases/VKP/Tier.js'
+
+router.route("/")
+.get(advancedResults(vkpTiers), getVkpTiers)
 
 router.route("/:id").get(getVkpTier);
 
