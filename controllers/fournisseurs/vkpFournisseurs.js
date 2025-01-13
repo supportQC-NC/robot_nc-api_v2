@@ -3,12 +3,19 @@ import asyncHandler from "../../middleware/async.js";
 import VkpFournisseurs from "../../models/bases/VKP/Fournisseur.js";
 
 // Get all VKP Fournisseurs
-const getVkpFournisseurs = asyncHandler(async (req, res, next) => {
-  const fournisseurs = await VkpFournisseurs.find();
+
+const getVkpFournisseurs  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await VkpFournisseurs.find();
 
   res
     .status(200)
-    .json({ success: true, count: fournisseurs.length, data: fournisseurs });
+    .json({ success: true, count: articles.length, data: articles });
 });
 
 // Get single VKP fournisseur

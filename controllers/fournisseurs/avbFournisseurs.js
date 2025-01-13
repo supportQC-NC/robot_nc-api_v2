@@ -2,14 +2,29 @@ import ErrorResponse from "../../utils/errorResponse.js";
 import asyncHandler from "../../middleware/async.js";
 import AvbFournisseurs from "../../models/bases/AVB/Fournisseur.js";
 
-// Get all AVB Fournisseurs
+
+
+
+
 const getAvbFournisseurs = asyncHandler(async (req, res, next) => {
-  const fournisseurs = await AvbFournisseurs.find();
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await AvbFournisseurs.find();
 
   res
     .status(200)
-    .json({ success: true, count: fournisseurs.length, data: fournisseurs });
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
+
+
+
 
 // Get single AVB fournisseur
 const getAvbFournisseur = asyncHandler(async (req, res, next) => {

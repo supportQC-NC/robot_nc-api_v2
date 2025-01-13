@@ -4,9 +4,15 @@ import {
   getFmbFournisseur,
 } from "../../controllers/fournisseurs/fmbFournisseurs.js";
 
+
+import advancedResults from "../../middleware/advancedResults.js";
+import fmbFournisseurs from '../../models/bases/FMB/Fournisseur.js'
+
+
 const router = express.Router();
 
-router.route("/").get(getFmbFournisseurs);
+router.route("/")
+.get(advancedResults(fmbFournisseurs), getFmbFournisseurs)
 
 router.route("/:id").get(getFmbFournisseur);
 

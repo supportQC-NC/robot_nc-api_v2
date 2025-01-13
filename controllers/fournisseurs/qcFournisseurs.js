@@ -3,12 +3,20 @@ import asyncHandler from "../../middleware/async.js";
 import QcFournisseurs from "../../models/bases/QC/Fournisseur.js";
 
 // Get all QC Fournisseurs
-const getQcFournisseurs = asyncHandler(async (req, res, next) => {
-  const fournisseurs = await QcFournisseurs.find();
+
+
+const getQcFournisseurs  = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await QcFournisseurs.find();
 
   res
     .status(200)
-    .json({ success: true, count: fournisseurs.length, data: fournisseurs });
+    .json({ success: true, count: articles.length, data: articles });
 });
 
 // Get single QC fournisseur

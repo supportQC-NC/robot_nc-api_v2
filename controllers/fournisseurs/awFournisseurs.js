@@ -3,13 +3,31 @@ import asyncHandler from "../../middleware/async.js";
 import AwFournisseurs from "../../models/bases/AW/Fournisseur.js";
 
 // Get all AW Fournisseurs
+
+
 const getAwFournisseurs = asyncHandler(async (req, res, next) => {
-  const fournisseurs = await AwFournisseurs.find();
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await AwFournisseurs.find();
 
   res
     .status(200)
-    .json({ success: true, count: fournisseurs.length, data: fournisseurs });
+    .json({ success: true, count: articles.length, data: articles });
 });
+
+
+
+
+
+
+
+
+
+
 
 // Get single AW fournisseur
 const getAwFournisseur = asyncHandler(async (req, res, next) => {

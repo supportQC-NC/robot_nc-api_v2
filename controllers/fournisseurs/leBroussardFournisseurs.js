@@ -3,12 +3,19 @@ import asyncHandler from "../../middleware/async.js";
 import LeBroussardFournisseurs from "../../models/bases/LE_BROUSSARD/Fournisseur.js";
 
 // Get all LEBROUSSARD Fournisseurs
-const getLeBroussardFournisseurs = asyncHandler(async (req, res, next) => {
-  const fournisseurs = await LeBroussardFournisseurs.find();
+
+const getLeBroussardFournisseurs   = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await LeBroussardFournisseurs.find();
 
   res
     .status(200)
-    .json({ success: true, count: fournisseurs.length, data: fournisseurs });
+    .json({ success: true, count: articles.length, data: articles });
 });
 
 // Get single LEBROUSSARD fournisseur

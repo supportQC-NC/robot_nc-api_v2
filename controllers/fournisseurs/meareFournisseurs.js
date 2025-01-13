@@ -3,12 +3,19 @@ import asyncHandler from "../../middleware/async.js";
 import MeareFournisseurs from "../../models/bases/MEARE/Fournisseur.js";
 
 // Get all MEARE Fournisseurs
-const getMeareFournisseurs = asyncHandler(async (req, res, next) => {
-  const fournisseurs = await MeareFournisseurs.find();
+
+const getMeareFournisseurs   = asyncHandler(async (req, res, next) => {
+  // Utiliser les résultats de `advancedResults` définis dans res.advancedResults
+  if (res.advancedResults) {
+    return res.status(200).json(res.advancedResults);
+  }
+
+  // Si `advancedResults` n'a pas été exécuté ou retourné un résultat
+  const articles = await MeareFournisseurs.find();
 
   res
     .status(200)
-    .json({ success: true, count: fournisseurs.length, data: fournisseurs });
+    .json({ success: true, count: articles.length, data: articles });
 });
 
 // Get single MEARE fournisseur
