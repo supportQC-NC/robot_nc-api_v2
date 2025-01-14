@@ -148,6 +148,20 @@ const app = express()
 app.use(express.json())
 
 
+// -- AJOUT DU MIDDLEWARE CORS AVANT TES ROUTES --
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",  // Dev local
+      "http://robot-nc.com" // Domaine en production
+    ],
+    credentials: true
+  })
+);
+
+
+
+
 // Connexion à la base de données MongoDB
 connectDB();
 
