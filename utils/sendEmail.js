@@ -16,7 +16,7 @@ const sendEmail = async (options) => {
     debug: true, // Active le mode debug
   });
 
-
+            
   const message = {
     from: `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`,
     to: options.email,
@@ -30,4 +30,9 @@ const sendEmail = async (options) => {
   console.log('Message sent: %s', info.messageId);
 };
 
+
+
+
 export default sendEmail;
+
+

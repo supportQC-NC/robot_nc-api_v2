@@ -1,9 +1,12 @@
+import path from 'path'
 import express from "express";
+import { fileURLToPath } from 'url';
 import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
 import cors from "cors";
 import colors from "colors";
+import fileUpload from "express-fileupload";
 import errorHandler from "./middleware/error.js"; // Middleware d'erreurs
 
 
@@ -173,6 +176,18 @@ if (process.env.NODE_ENV === "development") {
 }
 
 
+// file uploading 
+
+app.use(fileUpload())
+
+// set static folder 
+
+// Recréer __filename et __dirname pour les modules ES
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Configuration du dossier public
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Route principale pour tester l'API

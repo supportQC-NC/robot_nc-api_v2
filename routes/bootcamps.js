@@ -4,11 +4,14 @@ import {
     getBootcamp,
     createBootcamp,
     updateBootcamp,
-    deleteBootcamp
+    deleteBootcamp,
+    bootcampPhotoUpload
   } from '../controllers/bootcamps.js';
 
   const router = express.Router()
 
+
+  router.route('/:id/photo').put(bootcampPhotoUpload)
 
 router.route('/')
  .get(getBootcamps)

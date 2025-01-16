@@ -34,9 +34,9 @@ const register = asyncHandler(async (req, res, next) => {
       message, // Plain text version
       html,    // HTML version
     });
-    console.log('Welcome email sent to:', user.email);
+    console.log('Email de bienvennue envoyé a :', user.email);
   } catch (err) {
-    console.error('Error sending welcome email:', err.message);
+    console.error('Une erreur est survenue :', err.message);
   }
 
   // Send token response (authentication token, if needed)
