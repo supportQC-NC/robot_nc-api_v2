@@ -18,6 +18,7 @@ router
   .delete(deleteCompagny); 
 
 
-  router.route("/:id/photo").put(uploadCompagnyLogo ) 
+  
+  router.route("/:id/logo").put(uploadCompagnyLogo )
 
 export default router;
