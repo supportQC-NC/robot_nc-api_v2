@@ -97,14 +97,14 @@ export const deleteCompagny = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: {} });
 });
 
-
+import path from "path";
 
 /**
- * @desc      Upload a photo for a compagny
- * @route     PUT /api/v1/compagnies/:id/photo
+ * @desc      Upload a logo for a compagny
+ * @route     PUT /api/v1/compagnies/:id/logo
  * @access    Private
  */
-export const uploadCompagnyPhoto = asyncHandler(async (req, res, next) => {
+export const uploadCompagnyLogo = asyncHandler(async (req, res, next) => {
   const compagny = await Compagny.findById(req.params.id);
 
   if (!compagny) {
@@ -140,7 +140,7 @@ export const uploadCompagnyPhoto = asyncHandler(async (req, res, next) => {
   }
 
   // Créer un nom de fichier personnalisé
-  file.name = `photo_${compagny._id}${path.parse(file.name).ext}`;
+  file.name = `logo_${compagny._id}${path.parse(file.name).ext}`;
 
   // Déplacez le fichier dans le répertoire de téléchargement
   file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async (err) => {
@@ -149,8 +149,8 @@ export const uploadCompagnyPhoto = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse("Problème lors du téléchargement du fichier", 500));
     }
 
-    // Mettre à jour la compagnie avec le nom de l'image
-    await Compagny.findByIdAndUpdate(req.params.id, { photo: file.name });
+    // Mettre à jour la compagnie avec le nom du logo
+    await Compagny.findByIdAndUpdate(req.params.id, { logo: file.name });
 
     res.status(200).json({
       success: true,
