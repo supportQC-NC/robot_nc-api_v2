@@ -97,7 +97,6 @@ export const deleteCompagny = asyncHandler(async (req, res, next) => {
   res.status(200).json({ success: true, data: {} });
 });
 
-import path from "path";
 
 /**
  * @desc      Upload a logo for a compagny
