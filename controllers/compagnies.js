@@ -103,51 +103,35 @@ export const deleteCompagny = asyncHandler(async (req, res, next) => {
  * @access    Private
  */
 export const uploadCompagnyLogo = asyncHandler(async (req, res, next) => {
-  const compagny = await Compagny.findById(req.params.id);
+  console.log("DEBUG - Headers reçus :", req.headers);
+  console.log("DEBUG - Body reçu :", req.body);
+  console.log("DEBUG - Fichiers reçus :", req.files);
 
+  const compagny = await Compagny.findById(req.params.id);
   if (!compagny) {
-    return next(
-      new ErrorResponse(`Compagnie introuvable avec l’identifiant : ${req.params.id}`, 404)
-    );
+    return next(new ErrorResponse(`Compagnie introuvable avec l’identifiant : ${req.params.id}`, 404));
   }
 
-  // Vérifiez si un fichier a été uploadé
-  if (!req.files ) {
-    return next(new ErrorResponse("Veuillez télécharger un fichier valide", 400));
+  if (!req.files || !req.files.file) {
+    console.error("Erreur : Aucun fichier reçu");
+    return next(new ErrorResponse("Aucun fichier reçu", 400));
   }
 
   const file = req.files.file;
+  console.log("DEBUG - Fichier reçu :", file);
 
-
-
-  // Vérifiez que le fichier est une image
   if (!file.mimetype.startsWith("image")) {
     return next(new ErrorResponse("Veuillez télécharger une image", 400));
   }
 
-  // Vérifiez la taille du fichier
-  if (file.size > process.env.MAX_FILE_UPLOAD) {
-    return next(
-      new ErrorResponse(
-        `Veuillez télécharger une image de moins de ${
-          process.env.MAX_FILE_UPLOAD / 1024 / 1024
-        } Mo`,
-        400
-      )
-    );
-  }
-
-  // Créer un nom de fichier personnalisé
   file.name = `logo_${compagny._id}${path.parse(file.name).ext}`;
 
-  // Déplacez le fichier dans le répertoire de téléchargement
   file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async (err) => {
     if (err) {
       console.error(err);
-      return next(new ErrorResponse("Problème lors du téléchargement du fichier", 500));
+      return next(new ErrorResponse("Erreur lors du téléchargement du fichier", 500));
     }
 
-    // Mettre à jour la compagnie avec le chemin du logo
     await Compagny.findByIdAndUpdate(req.params.id, { logo: file.name });
 
     res.status(200).json({
