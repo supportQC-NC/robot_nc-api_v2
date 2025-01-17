@@ -110,11 +110,14 @@ export const uploadCompagnyLogo = asyncHandler(async (req, res, next) => {
   }
 
   // Vérifiez si un fichier a été uploadé
-  if (!req.files) {
+  if (!req.files ) {
     return next(new ErrorResponse("Veuillez télécharger un fichier valide", 400));
   }
 
   const file = req.files.file;
+
+  // Déboguez pour voir le contenu de `req.files`
+  console.log("Fichier reçu :", file);
 
   // Vérifiez que le fichier est une image
   if (!file.mimetype.startsWith("image")) {
