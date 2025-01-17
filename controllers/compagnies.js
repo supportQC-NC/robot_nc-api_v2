@@ -110,7 +110,7 @@ export const uploadCompagnyLogo = asyncHandler(async (req, res, next) => {
   }
 
   // Vérifiez si un fichier a été uploadé
-  if (!req.files || !req.files.file) {
+  if (!req.files) {
     return next(new ErrorResponse("Veuillez télécharger un fichier valide", 400));
   }
 
