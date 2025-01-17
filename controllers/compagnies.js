@@ -118,8 +118,7 @@ export const uploadCompagnyLogo = asyncHandler(async (req, res, next) => {
 
   const file = req.files.file;
 
-  // Déboguez pour voir le contenu de `req.files`
-  console.log("Fichier reçu :", file);
+
 
   // Vérifiez que le fichier est une image
   if (!file.mimetype.startsWith("image")) {
