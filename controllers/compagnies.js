@@ -18,6 +18,8 @@ export const getCompagnies = asyncHandler(async (req, res, next) => {
   });
 });
 
+
+
 /**
  * @desc      Get single compagny by ID
  * @route     GET /api/v1/compagnies/:id

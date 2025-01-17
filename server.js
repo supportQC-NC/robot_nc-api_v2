@@ -10,6 +10,9 @@ import fileUpload from "express-fileupload";
 import errorHandler from "./middleware/error.js"; // Middleware d'erreurs
 
 
+
+
+
 // Route Files
 import auth from './routes/auth.js';
 import bootcamps from './routes/bootcamps.js'
@@ -175,9 +178,14 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-// file uploading 
+// Middleware pour uploader des fichiers
+app.use(
+  fileUpload({
+    createParentPath: true, // Crée les dossiers si nécessaire
+    limits: { fileSize: 2 * 1024 * 1024 }, // Limite de taille des fichiers (2 Mo ici)
+  })
+);
 
-app.use(fileUpload())
 
 
 // set static folder 
@@ -343,6 +351,10 @@ app.use(errorHandler);
 
 
 
-const PORT = process.env.PORT || 5000
-
-app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+// Définition du port et lancement du serveur
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () =>
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+  )
+);
