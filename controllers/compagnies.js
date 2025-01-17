@@ -1,4 +1,3 @@
-// controllers/compagnies.js
 import path from "path";
 import ErrorResponse from "../utils/errorResponse.js";
 import asyncHandler from "../middleware/async.js";
@@ -29,7 +28,7 @@ export const getCompagny = asyncHandler(async (req, res, next) => {
 
   if (!compagny) {
     return next(
-      new ErrorResponse(`Compagnie introuvable avec l’identifiant ${req.params.id}`, 404)
+      new ErrorResponse(`Compagnie introuvable avec l’identifiant : ${req.params.id}`, 404)
     );
   }
 
@@ -40,41 +39,35 @@ export const getCompagny = asyncHandler(async (req, res, next) => {
 });
 
 /**
- * @desc      Add a new compagny
+ * @desc      Create a new compagny
  * @route     POST /api/v1/compagnies
  * @access    Private
  */
 export const addCompagny = asyncHandler(async (req, res, next) => {
-  // Par exemple, si tu souhaites lier la compagnie à l’utilisateur
-  // qui crée la compagnie, tu peux ajouter :
-  // req.body.user = req.user.id;
-
-  const newCompagny = await Compagny.create(req.body);
+  const compagny = await Compagny.create(req.body);
 
   res.status(201).json({
     success: true,
-    data: newCompagny,
+    data: compagny,
   });
 });
 
 /**
- * @desc      Update compagny by ID
+ * @desc      Update a compagny by ID
  * @route     PUT /api/v1/compagnies/:id
  * @access    Private
  */
 export const updateCompagny = asyncHandler(async (req, res, next) => {
-  let compagny = await Compagny.findById(req.params.id);
-
-  if (!compagny) {
-    return next(
-      new ErrorResponse(`Compagnie introuvable avec l’identifiant ${req.params.id}`, 404)
-    );
-  }
-
-  compagny = await Compagny.findByIdAndUpdate(req.params.id, req.body, {
+  const compagny = await Compagny.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
   });
+
+  if (!compagny) {
+    return next(
+      new ErrorResponse(`Compagnie introuvable avec l’identifiant : ${req.params.id}`, 404)
+    );
+  }
 
   res.status(200).json({
     success: true,
@@ -83,20 +76,24 @@ export const updateCompagny = asyncHandler(async (req, res, next) => {
 });
 
 /**
- * @desc      Delete compagny by ID
+ * @desc      Delete a compagny by ID
  * @route     DELETE /api/v1/compagnies/:id
  * @access    Private
  */
 export const deleteCompagny = asyncHandler(async (req, res, next) => {
   const compagny = await Compagny.findByIdAndDelete(req.params.id);
+
   if (!compagny) {
     return next(
-      new ErrorResponse(`Compagny introuvable avec l’identifiant : ${req.params.id}`, 404)
+      new ErrorResponse(`Compagnie introuvable avec l’identifiant : ${req.params.id}`, 404)
     );
   }
-  res.status(200).json({ success: true, data: {} });
-});
 
+  res.status(200).json({
+    success: true,
+    data: {},
+  });
+});
 
 /**
  * @desc      Upload a logo for a compagny
@@ -108,15 +105,13 @@ export const uploadCompagnyLogo = asyncHandler(async (req, res, next) => {
 
   if (!compagny) {
     return next(
-      new ErrorResponse(
-        `Compagnie introuvable avec l’identifiant : ${req.params.id}`,
-        404
-      )
+      new ErrorResponse(`Compagnie introuvable avec l’identifiant : ${req.params.id}`, 404)
     );
   }
 
-  if (!req.files) {
-    return next(new ErrorResponse("Veuillez télécharger un fichier", 400));
+  // Vérifiez si un fichier a été uploadé
+  if (!req.files || !req.files.file) {
+    return next(new ErrorResponse("Veuillez télécharger un fichier valide", 400));
   }
 
   const file = req.files.file;
@@ -148,7 +143,7 @@ export const uploadCompagnyLogo = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse("Problème lors du téléchargement du fichier", 500));
     }
 
-    // Mettre à jour la compagnie avec le nom du logo
+    // Mettre à jour la compagnie avec le chemin du logo
     await Compagny.findByIdAndUpdate(req.params.id, { logo: file.name });
 
     res.status(200).json({
@@ -157,6 +152,3 @@ export const uploadCompagnyLogo = asyncHandler(async (req, res, next) => {
     });
   });
 });
-
-
-
