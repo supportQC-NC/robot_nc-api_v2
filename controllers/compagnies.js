@@ -1,5 +1,5 @@
 // controllers/compagnies.js
-
+import path from "path";
 import ErrorResponse from "../utils/errorResponse.js";
 import asyncHandler from "../middleware/async.js";
 import Compagny from "../models/Company.js";
@@ -96,3 +96,68 @@ export const deleteCompagny = asyncHandler(async (req, res, next) => {
   }
   res.status(200).json({ success: true, data: {} });
 });
+
+
+
+/**
+ * @desc      Upload a photo for a compagny
+ * @route     PUT /api/v1/compagnies/:id/photo
+ * @access    Private
+ */
+export const uploadCompagnyPhoto = asyncHandler(async (req, res, next) => {
+  const compagny = await Compagny.findById(req.params.id);
+
+  if (!compagny) {
+    return next(
+      new ErrorResponse(
+        `Compagnie introuvable avec l’identifiant : ${req.params.id}`,
+        404
+      )
+    );
+  }
+
+  if (!req.files) {
+    return next(new ErrorResponse("Veuillez télécharger un fichier", 400));
+  }
+
+  const file = req.files.file;
+
+  // Vérifiez que le fichier est une image
+  if (!file.mimetype.startsWith("image")) {
+    return next(new ErrorResponse("Veuillez télécharger une image", 400));
+  }
+
+  // Vérifiez la taille du fichier
+  if (file.size > process.env.MAX_FILE_UPLOAD) {
+    return next(
+      new ErrorResponse(
+        `Veuillez télécharger une image de moins de ${
+          process.env.MAX_FILE_UPLOAD / 1024 / 1024
+        } Mo`,
+        400
+      )
+    );
+  }
+
+  // Créer un nom de fichier personnalisé
+  file.name = `photo_${compagny._id}${path.parse(file.name).ext}`;
+
+  // Déplacez le fichier dans le répertoire de téléchargement
+  file.mv(`${process.env.FILE_UPLOAD_PATH}/${file.name}`, async (err) => {
+    if (err) {
+      console.error(err);
+      return next(new ErrorResponse("Problème lors du téléchargement du fichier", 500));
+    }
+
+    // Mettre à jour la compagnie avec le nom de l'image
+    await Compagny.findByIdAndUpdate(req.params.id, { photo: file.name });
+
+    res.status(200).json({
+      success: true,
+      data: file.name,
+    });
+  });
+});
+
+
+

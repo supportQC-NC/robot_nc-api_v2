@@ -1,5 +1,5 @@
 import express from 'express';
-import { addCompagny, deleteCompagny, getCompagnies, getCompagny, updateCompagny } from '../controllers/compagnies.js';
+import { addCompagny, deleteCompagny, getCompagnies, getCompagny, updateCompagny, uploadCompagnyPhoto } from '../controllers/compagnies.js';
 
 
 const router = express.Router();
@@ -16,5 +16,8 @@ router
   .get(getCompagny) 
   .put(updateCompagny) 
   .delete(deleteCompagny); 
+
+
+  router.route("/:id/photo").put(uploadCompagnyPhoto);// Nouvelle route
 
 export default router;
