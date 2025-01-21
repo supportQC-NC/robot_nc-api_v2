@@ -8,7 +8,7 @@ import cors from "cors";
 import colors from "colors";
 import fileUpload from "express-fileupload";
 import errorHandler from "./middleware/error.js"; // Middleware d'erreurs
-
+import cookieParser from 'cookie-parser';
 
 
 
@@ -153,13 +153,16 @@ const app = express()
 // Body parser 
 app.use(express.json())
 
+// Cookie parser 
+app.use(cookieParser)
+
 
 // -- AJOUT DU MIDDLEWARE CORS AVANT TES ROUTES --
 app.use(
   cors({
     origin: [
       "http://localhost:3000",  // Dev local
-      "http://robot-nc.com" // Domaine en production
+      "https://robot-nc.com" // Domaine en production
     ],
     credentials: true
   })
